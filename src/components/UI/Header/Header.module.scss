@@ -1,0 +1,23 @@
+.header {
+  width: 100vw;
+  height: 5vh;
+  //border-bottom: rgba($color: #fff, $alpha: .2) 1px solid;
+  box-sizing: border-box;
+
+  &_icon {
+    max-height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-height: 5vh;
+    }
+    p{
+      color:#fff;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+}

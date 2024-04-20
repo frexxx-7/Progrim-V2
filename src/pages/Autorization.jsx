@@ -3,8 +3,32 @@ import classes from './Autorization.module.scss'
 
 const Autorization = () => {
   return (
-    <div className={classes.main}>
-      
+    <div className="main">
+      <div className={classes.main_container}>
+        <div className={classes.main_first}>
+
+          <div className={classes.auth_form}>
+            <div className={classes.header}>
+              <h3>АВТОРИЗАЦИЯ</h3>
+            </div>
+
+            <div className={classes.inputs}>
+              <div className={classes.inputs_container}>
+                <input type="text" name="" placeholder='Логин' />
+                <input type="text" name="" placeholder='Пароль' />
+              </div>
+            </div>
+
+            <div className=''>
+
+            </div>
+          </div>
+
+        </div>
+        <div className={classes.main_second}>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><img src="./icon.png" alt="icon" /></div>
+        </div>
+      </div>
     </div>
   )
 }
