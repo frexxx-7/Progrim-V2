@@ -1,5 +1,6 @@
 import React from 'react'
 import classes from './Autorization.module.scss'
+import { Link } from 'react-router-dom'
 
 const Autorization = () => {
   return (
@@ -19,8 +20,9 @@ const Autorization = () => {
               </div>
             </div>
 
-            <div className=''>
-
+            <div className={classes.buttons}>
+              <button>Войти</button>
+              <Link className={classes.toRegLink} to="/signup">Регистрация</Link>
             </div>
           </div>
 

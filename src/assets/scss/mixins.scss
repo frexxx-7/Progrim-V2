@@ -23,3 +23,26 @@
     color: #fff
   }
 }
+
+@mixin button {
+  border-radius: 12px;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  padding: 8px 20px;
+  border: 1px solid transparent;
+  transition: border-color 500ms linear,
+    background-color 300ms linear,
+    color 500ms linear;
+  outline: none;
+
+  &:hover {
+    border-color: #fff;
+    background-color: #212121;
+    transition: color 200ms linear;
+    cursor: pointer;
+  }
+}

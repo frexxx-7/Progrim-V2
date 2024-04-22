@@ -1,4 +1,4 @@
-@import '../assets/scss/mixins.scss';
+@import '../../assets/scss/mixins.scss';
 
 .main {
   &_container {
@@ -32,6 +32,7 @@
   //border: 1px solid #fff;
   width: 60%;
   height: 40%;
+  z-index: 10;
 
   .header {
     width: 100%;
@@ -60,8 +61,31 @@
       width: 80%;
       flex-direction: column;
 
-      input{
+      input {
         @include input;
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+
+    button {
+      @include button;
+    }
+
+    .toRegLink {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 200ms linear;
+
+      &:hover {
+        color: #b8b8b8;
       }
     }
   }
