@@ -2,6 +2,6 @@ import Autorization from "../pages/Autorization/Autorization";
 import Registration from "../pages/Registration/Registration";
 
 export const publicRoutes = [
-  { path: "/signin", component: Autorization },
-  { path: "/signup", component: Registration },
+  { path: "/signin", Component: Autorization },
+  { path: "/signup", Component: Registration },
 ];

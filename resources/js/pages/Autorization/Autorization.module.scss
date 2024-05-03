@@ -1,92 +1,96 @@
 @import '../../assets/scss/mixins.scss';
 
 .main {
-  &_container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-  }
-
-  &_first {
-    height: 100%;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &_second {
-    height: 100%;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-
-    img {
-      max-width: 80%;
-      opacity: .9;
+    &_container {
+        height: 100%;
+        width: 100%;
+        display: flex;
     }
-  }
+
+    &_first {
+        height: 100%;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &_second {
+        height: 100%;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+
+        img {
+            max-width: 80%;
+            opacity: .9;
+        }
+    }
 }
 
 .auth_form {
-  //border: 1px solid #fff;
-  width: 60%;
-  height: 40%;
-  z-index: 10;
+    //border: 1px solid #fff;
+    width: 60%;
+    z-index: 10;
 
-  .header {
-    width: 100%;
-    height: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .header {
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
 
-    h3 {
-      color: #fff;
-      padding: 0;
-      margin: 0;
-    }
-  }
-
-  .inputs {
-    width: 100%;
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &_container {
-      display: flex;
-      gap: 20px;
-      width: 80%;
-      flex-direction: column;
-
-      input {
-        @include input;
-      }
-    }
-  }
-
-  .buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 16px;
-
-    button {
-      @include button;
+        h3 {
+            color: #fff;
+            padding: 0;
+            margin: 0;
+        }
     }
 
-    .toRegLink {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 200ms linear;
+    .inputs {
+        width: 100%;
+        height: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-      &:hover {
-        color: #b8b8b8;
-      }
+        &_container {
+            display: flex;
+            gap: 20px;
+            width: 80%;
+            flex-direction: column;
+
+            input {
+                @include input;
+            }
+        }
     }
-  }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 16px;
+
+        button {
+            @include button;
+        }
+
+        button:first-child {
+            margin-top: 20px;
+        }
+
+        .toRegLink {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 200ms linear;
+
+            &:hover {
+                color: #b8b8b8;
+            }
+        }
+    }
 }
