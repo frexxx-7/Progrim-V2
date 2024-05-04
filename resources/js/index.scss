@@ -1,62 +1,65 @@
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .app_background {
-  background-color: black;
-  background: linear-gradient(-45deg, #000000, #414141);
+    background-color: black;
+    background: linear-gradient(-45deg, #000000, #414141);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
-  min-width: 100vw;
-  min-height: 100vh;
-  box-sizing: border-box;
+    min-width: 100vw;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 @keyframes gradient {
-  0% {
-      background-position: 0% 50%;
-  }
-  50% {
-      background-position: 100% 50%;
-  }
-  100% {
-      background-position: 0% 50%;
-  }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .app_background::before {
-  position: fixed;
-  content: "V2";
-  color: rgba($color: #fff, $alpha: .04);
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 200px;
-  box-sizing: border-box;
-  z-index: 0;
-  font-weight: bold;
+    position: fixed;
+    content: "V2";
+    color: rgba($color: #fff, $alpha: .04);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 200px;
+    box-sizing: border-box;
+    z-index: 0;
+    font-weight: bold;
 }
 
 .main {
-  height: 90vh;
-  width: 100%;
-  z-index: 1;
-  box-sizing: border-box;
+    height: 90vh;
+    width: 100%;
+    z-index: 1;
+    box-sizing: border-box;
 }
+
 .fade-enter {
   opacity: 0;
-  transform: scale(0.5);
+  transform: translateY(-50px) scale(0.8);
 }
 
 .fade-enter-active {
   opacity: 1;
-  transform: scale(1);
-  transition: opacity 200ms ease-in, transform 300ms ease-in;
+  transform: translateY(0) scale(1);
+  transition: opacity 300ms ease-in, transform 300ms ease-in;
 }
 
 .fade-exit {
@@ -65,4 +68,6 @@ body {
 
 .fade-exit-active {
   opacity: 0;
-  transition: opacity 300ms ease-out;}
+  transform: translateY(50px) scale(0.8);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}

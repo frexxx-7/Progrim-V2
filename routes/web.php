@@ -20,8 +20,13 @@ Route::get('/', function () {
   return view('index');
 });
 
-Route::get('/{any}', function () {
-    return view('index');
+Route::get('/env', function () {
+  return response()->json([
+    'env' => $_ENV,
+  ]);
 });
 
+Route::get('/{any}', function () {
+  return view('index');
+})->where('any', '.*');
 
