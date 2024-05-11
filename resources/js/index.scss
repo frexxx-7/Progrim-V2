@@ -3,6 +3,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
 }
 
 .app_background {
@@ -28,7 +29,33 @@ body {
         background-position: 0% 50%;
     }
 }
+.app_background::after {
+  content: "";
+  background-image: url("./Vector.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  position: fixed;
+  top: -455px;
+  left: -627px;
+  width: 1954px;
+  height: 1910px;
+  filter: blur(150px);
+  opacity: .5;
+  animation: rotate 10s linear infinite forwards;
+  transform-origin: center;
+}
+@keyframes rotate {
 
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+}
 .app_background::before {
     position: fixed;
     content: "V2";
@@ -49,6 +76,8 @@ body {
     width: 100%;
     z-index: 1;
     box-sizing: border-box;
+    position: relative;
+    top: 5vh;
 }
 
 .fade-enter {
@@ -70,4 +99,23 @@ body {
   opacity: 0;
   transform: translateY(50px) scale(0.8);
   transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+.error{
+  color:red;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  animation: showError .3s ease;
+}
+
+@keyframes showError {
+  from{
+    transform: translateY(-25px);
+    opacity: 0;
+  }
+  to{
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }

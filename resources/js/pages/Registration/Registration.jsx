@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import classes from './Registration.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
+import axiosCLient from '../../axios.client';
+import { useStateContext } from '../../context/ContextProvider';
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -10,15 +12,7 @@ const Registration = () => {
   const repeatPasswordRef = useRef(null);
   const [error, setError] = useState('');
 
-  fetch('/env')
-    .then(response => response.json())
-    .then(data => {
-        // Теперь у вас есть доступ к .env Laravel в переменной data.env
-        console.log(data.env);
-    })
-    .catch(error => {
-        console.error('Ошибка при получении .env:', error);
-    });
+  const { setUser, setToken } = useStateContext()
 
   const validateEmail = (email) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -48,7 +42,7 @@ const Registration = () => {
     }
 
     const payload = {
-      name: nameRef.current.value,
+      name: loginRef.current.value,
       email: emailRef.current.value,
       password: passwordRef.current.value,
       password_confirmation: repeatPasswordRef.current.value
@@ -62,7 +56,7 @@ const Registration = () => {
       .catch(err => {
         const response = err.response
         if (response && response.status === 422) {
-          setError(response.data.errors)
+          setError(response.data.message)
         }
       })
   };
@@ -86,7 +80,7 @@ const Registration = () => {
                 <input ref={repeatPasswordRef} type="password" name="repeat_password" placeholder='Повторите пароль' autoComplete='off' />
               </div>
             </div>
-            {error && <div className={classes.error}>{error}</div>}
+            {error && <div className={"error"}>{error}</div>}
 
             <div className={classes.buttons}>
               <button onClick={onRegButtonClick}>Регистрация</button>

@@ -3,6 +3,8 @@
   height: 5vh;
   //border-bottom: rgba($color: #fff, $alpha: .2) 1px solid;
   box-sizing: border-box;
+  position: fixed;
+  z-index: 999;
 
   &_icon {
     max-height: 100%;
