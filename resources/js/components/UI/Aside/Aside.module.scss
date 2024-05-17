@@ -1,0 +1,55 @@
+.aside {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1001;
+    height: 100%;
+}
+
+.aside_content {
+    transition: all .3s linear;
+    height: 100%;
+}
+
+.aside_button {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    left: -50px;
+}
+
+.aside_button:hover {
+    cursor: pointer;
+}
+
+.aside_button svg {
+    width: 100%;
+    height: 100%;
+}
+
+.user_login{
+  color:#fff;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+.user_login:hover{
+  cursor: pointer;  
+  color:#dedede;
+}
+.aside_content ul{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style-type: none;
+}
+.aside_content ul li a{
+  color:#fff;
+  font-weight: 500;
+  text-decoration: none;
+}
+.aside_content ul li:hover{
+  cursor: pointer;
+  color:#dedede;
+}

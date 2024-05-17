@@ -9,5 +9,7 @@
     <div id="root"></div>
     @viteReactRefresh
     @vite(['resources/js/main.jsx'])
+
+    {{--<script src="../../assets/jquery-3.7.1.min.js"></script>  --}}
   </body>
 </html>
