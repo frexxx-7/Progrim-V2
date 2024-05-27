@@ -1,5 +1,6 @@
 import React from 'react'
 import classes from './Header.module.scss'
+import Aside from '../Aside/Aside'
 
 const Header = () => {
   return (
@@ -9,6 +10,7 @@ const Header = () => {
         <img src="./icon.png" alt="icon" />
         <p>GRIM</p>
       </div>
+      <Aside />
     </div>
   )
 }

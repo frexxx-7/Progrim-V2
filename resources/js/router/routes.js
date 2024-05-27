@@ -2,6 +2,7 @@ import Autorization from "../pages/Autorization/Autorization";
 import Main from "../pages/Main/Main";
 import MainPage from "../pages/MainPage/MainPage";
 import News from "../pages/News/News";
+import Profile from "../pages/Profile/Profile";
 import Registration from "../pages/Registration/Registration";
 
 export const publicRoutes = [
@@ -12,4 +13,5 @@ export const publicRoutes = [
 export const privateRoutes = [
   { path: "/main", Component: Main, childComponent: MainPage },
   { path: "/news", Component: Main, childComponent: News },
+  { path: "/profile", Component: Main, childComponent: Profile },
 ];

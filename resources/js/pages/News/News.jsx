@@ -7,6 +7,10 @@ const News = () => {
       <div className={classes.pageTitle}>
         <h1>Новости</h1>
       </div>
+
+      <div className={classes.newsContent}>
+        
+      </div>
     </div>
   )
 }

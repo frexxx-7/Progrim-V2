@@ -6,8 +6,8 @@ function App() {
 
   return (
     <div className="app_background">
-      <Header />
       <BrowserRouter>
+      <Header />
         <AppRouter />
       </BrowserRouter>
     </div>

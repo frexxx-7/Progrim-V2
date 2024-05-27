@@ -25,9 +25,9 @@ const Aside = () => {
 
 
       </div>
-      <div className={classes.aside_content} style={{ width: showAside ? "20vw" : "0vw" }}>
+      <div className={classes.aside_content} style={{ width: showAside ? "20vw" : "0vw", opacity: showAside ? "1" : "0", padding: showAside ? "20px" : "0" }}>
         <div className={classes.you_info}>
-          <p className={classes.user_login}>{user.name}</p>
+          <Link to={"/profile"} className={classes.user_login}> <img src={"/storage/"+ user.avatar} alt="" /> {user.name}</Link>
         </div>
         <ul>
           <li>
