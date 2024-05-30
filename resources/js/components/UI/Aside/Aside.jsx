@@ -2,10 +2,21 @@ import React, { useState } from 'react'
 import classes from './Aside.module.scss'
 import { useStateContext } from '../../../context/ContextProvider';
 import { Link } from 'react-router-dom';
+import axiosCLient from '../../../axios.client';
 
 const Aside = () => {
-  const { user } = useStateContext()
+  const { user, setUser, setToken } = useStateContext()
   const [showAside, setShowAside] = useState(false)
+
+  const onLogout = (ev) => {
+    ev.preventDefault()
+
+    axiosCLient.post('/logout')
+      .then(() => {
+        setUser({})
+        setToken(null)
+      })
+  }
 
   return (
     <aside className={classes.aside}>
@@ -27,7 +38,7 @@ const Aside = () => {
       </div>
       <div className={classes.aside_content} style={{ width: showAside ? "20vw" : "0vw", opacity: showAside ? "1" : "0", padding: showAside ? "20px" : "0" }}>
         <div className={classes.you_info}>
-          <Link to={"/profile"} className={classes.user_login}> <img src={"/storage/"+ user.avatar} alt="" /> {user.name}</Link>
+          <Link to={"/profile"} className={classes.user_login}> <img src={"/storage/" + user.avatar} alt="" /> {user.name}</Link>
         </div>
         <ul>
           <li>
@@ -46,6 +57,9 @@ const Aside = () => {
           </li>
           <li>
             <Link to={"/news"}>Друзья</Link>
+          </li>
+          <li className={classes.exitLink}>
+            <a onClick={onLogout}>Выход</a>
           </li>
         </ul>
       </div>

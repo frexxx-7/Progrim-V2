@@ -18,8 +18,7 @@ const AppRouter = () => {
         setUser(data)
       })
   }, [])
-  console.log(user && token );
-  console.log(token);
+
   return (
     <SwitchTransition>
       <CSSTransition nodeRef={nodeRef} key={location.pathname} classNames="fade" timeout={300} unmountOnExit >
