@@ -25,15 +25,15 @@ const AppRouter = () => {
         <div ref={nodeRef}>
 
           {
-            user && token 
-            ?
+            user && token
+              ?
               <Routes location={location}>
 
                 {privateRoutes.map((route) => (
                   <Route
                     key={route.path}
                     path={route.path}
-                    element={<route.Component children={<route.childComponent/>}/>}
+                    element={<route.Component children={<route.childComponent />} />}
                   />
                 ))
                 }

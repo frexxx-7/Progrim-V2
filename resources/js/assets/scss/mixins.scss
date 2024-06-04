@@ -1,3 +1,11 @@
+@mixin font {
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  transition: color 500ms linear;
+}
+
 @mixin input {
   background: none;
   color: #fff;
