@@ -1,13 +1,14 @@
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import classes from './Friends.module.scss'
 import Loader from '../../components/UI/Loader/Loader'
 import FriendsItem from './FriendsItem'
 
 
-const FriendsList = ({visibleLoader, friends}) => {
-  console.log(friends);
+const FriendsList = ({ visibleLoader, friends, setRerender }) => {
+
   if (visibleLoader)
     return <Loader />
+
 
   return (
     <>
@@ -26,7 +27,7 @@ const FriendsList = ({visibleLoader, friends}) => {
               </div>
               :
               Object.entries(friends).map(([key, value]) => (
-                <FriendsItem key={key} friend={value}/>
+                <FriendsItem key={key} friend={value} setRerender={setRerender} />
               ))
             }
           </div>

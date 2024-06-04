@@ -47,8 +47,11 @@ class FriendController extends Controller
   }
   public function deleteFriends(Request $request, string $id)
   {
+    $userId = request('userId');
+
     try {
-      $friend = Friend::where("id", $id)->delete();
+      $friend = Friend::where("idOneUser", $id)->where("idTwoUser", $userId)->delete();
+      $friend = Friend::where("idTwoUser", $id)->where("idOneUser", $userId)->delete();
     } catch (\Throwable $th) {
       return response($th->getMessage());
     }

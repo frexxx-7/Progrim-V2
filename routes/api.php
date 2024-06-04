@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->group(function(){
   });
 
   Route::post('/logout', [AuthController::class, 'logout']);
+  Route::post('/updatePassword', [UserController::class, 'updatePassword']);
 });
 
 Route::post('/signup', [AuthController::class, 'signup']);
@@ -30,10 +31,11 @@ Route::post('/signin', [AuthController::class, 'signin']);
 
 Route::post('/friends', [FriendController::class, 'getAll']);
 Route::post('/addFriend', [FriendController::class, 'addFriends']);
-Route::get('/deleteFriend/{id}', [FriendController::class, 'deleteFriends']);
+Route::post('/deleteFriend/{id}', [FriendController::class, 'deleteFriends']);
 
 Route::get('/users', [UserController::class, 'getAll']);
 Route::post('/getAllForFriends', [UserController::class, 'getAllForFriends']);
+Route::post('/editProfile/{id}', [UserController::class, 'editUser']);
 
 Route::post('/friendsRequestInbox', [FriendRequestController::class, 'getAllInpox']);
 Route::post('/friendsRequestOutbox', [FriendRequestController::class, 'getAllOutbox']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Friend;
 use App\FriendsRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FriendRequestRequest;
@@ -30,15 +31,30 @@ class FriendRequestController extends Controller
   public function getAllInpox(Request $request)
   {
     $userId = request('userId');
+
     $friendsRequests = FriendsRequest::where('idRecipient', $userId)
       ->whereNotIn('state', ['confirmed', 'refused'])
-      ->with('sender') // Eager load the recipient relationship
+      ->with('sender')
       ->get();
-    $users = $friendsRequests->map(function ($friendRequest) {
-      $recipientData = $friendRequest->sender->toArray(); // Convert recipient data to array
-      $recipientData['friendsRequestId'] = $friendRequest->id; // Add FriendsRequest ID to the array
-      return $recipientData;
+
+    $filteredRequests = $friendsRequests->filter(function ($friendRequest) use ($userId) {
+      $senderId = $friendRequest->idSender;
+      $areFriends = Friend::where(function ($query) use ($userId, $senderId) {
+        $query->where('idOneUser', $userId)
+          ->where('idTwoUser', $senderId);
+      })->orWhere(function ($query) use ($userId, $senderId) {
+        $query->where('idOneUser', $senderId)
+          ->where('idTwoUser', $userId);
+      })->exists();
+      return !$areFriends;
     });
+
+    $users = $filteredRequests->map(function ($friendRequest) {
+      $senderData = $friendRequest->sender->toArray();
+      $senderData['friendsRequestId'] = $friendRequest->id;
+      return $senderData;
+    });
+
     return response(compact("users"));
   }
   public function addFriendRequest(FriendRequestRequest $request)

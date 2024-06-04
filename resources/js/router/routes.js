@@ -1,11 +1,11 @@
 import Autorization from "../pages/Autorization/Autorization";
 import Friends from "../pages/Friends/Friends";
-import FriendList from "../pages/Friends/FriendList";
 import Main from "../pages/Main/Main";
 import MainPage from "../pages/MainPage/MainPage";
 import News from "../pages/News/News";
 import Profile from "../pages/Profile/Profile";
 import Registration from "../pages/Registration/Registration";
+import EditProfile from "../pages/EditProfile/EditProfile";
 
 export const publicRoutes = [
   { path: "/signin", Component: Autorization },
@@ -17,4 +17,5 @@ export const privateRoutes = [
   { path: "/news", Component: Main, childComponent: News },
   { path: "/profile", Component: Main, childComponent: Profile },
   { path: "/friends", Component: Main, childComponent: Friends },
+  { path: "/editProfile", Component: Main, childComponent: EditProfile },
 ];

@@ -16,6 +16,7 @@ const Friends = () => {
   const { user } = useStateContext()
   const [friends, setFriends] = useState()
   const [searchVisible, setSearchVisible] = useState(false)
+  const [rerender, setRerender] = useState();
 
   const dispatch = useDispatch();
 
@@ -35,6 +36,10 @@ const Friends = () => {
   }
 
   useEffect(() => {
+    getAllFriends()
+  }, [rerender])
+  
+  useEffect(() => {
     user.id &&
       getAllFriends()
   }, [user])
@@ -43,7 +48,7 @@ const Friends = () => {
   const selectPage = () => {
     switch (componentCh) {
       case 0:
-        return <FriendList visibleLoader={visibleLoader} friends={friends} />
+        return <FriendList visibleLoader={visibleLoader} friends={friends} setRerender={setRerender} />
       case 1:
         return <InboxFriends visibleLoader={visibleLoader} friends={friends} />
       case 2:
@@ -68,6 +73,7 @@ const Friends = () => {
             <li><a onClick={() => {
               setComponentCh(0)
               setSearchVisible(false)
+              setRerender(Date.now())
             }}>
               {
                 window.innerWidth <= 620

@@ -3,8 +3,24 @@ import { NavLink } from 'react-router-dom'
 import classes from './UserItem/UserItem.module.scss'
 import classes2 from './Friends.module.scss'
 import Loader from '../../components/UI/Loader/Loader'
+import axiosCLient from '../../axios.client'
+import { useStateContext } from '../../context/ContextProvider'
 
-const FriendItem = ({ friend }) => {
+const FriendItem = ({ friend, setRerender }) => {
+  const { user } = useStateContext()
+
+  const deleteFriend = () => {
+    const payload = {
+      userId: user.id
+    }
+    axiosCLient.post(`/deleteFriend/${friend.id}`, payload)
+      .then(({ data }) => {
+        setRerender(Date.now())
+      })
+      .catch(err => {
+        console.log(err.message);
+      })
+  }
 
   return (
     <div className={classes.user}>
@@ -26,7 +42,7 @@ const FriendItem = ({ friend }) => {
 
         </NavLink>
 
-        <a className={classes2.delete}>
+        <a className={classes2.delete} onClick={() => deleteFriend()}>
           {
             window.innerWidth <= 620
               ? <i className="fa-solid fa-trash"></i>
