@@ -1,0 +1,123 @@
+@import '../../assets/scss/mixins.scss';
+//@import '../../../assets/scss/variables.scss';
+
+.message {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 30px;
+    vertical-align: top;
+    display: flex;
+    transition: border 300ms linear;
+}
+
+.correspondence {
+    width: 65%;
+    height: 79vh;
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .chatsImage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        i {
+
+            display: inline-block;
+            color: #fff;
+
+            &::before {
+                font-size: 70px;
+            }
+        }
+    }
+}
+
+.chats {
+    width: 35%;
+    display: block;
+    box-sizing: border-box;
+    height: 79vh;
+    transition: border-right 300ms linear;
+
+    .header {
+        display: flex;
+        justify-content: center;
+        transition: border-bottom 300ms linear;
+        height: 7%;
+
+        h2 {
+            @include font;
+            display: flex;
+            margin: .5rem 0;
+        }
+    }
+
+    .chatsList {
+        height: 90%;
+
+        .noChatsDiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+            .noChats {
+                @include font;
+                margin: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1130px) {
+    .message {
+        width: 96%;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .chats {
+        width: 25%;
+    }
+
+    .correspondence {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .chats {
+        width: 18%;
+        height: 100%;
+    }
+
+    .correspondence {
+        width: 82%;
+        height: 100%;
+    }
+
+    .message {
+        height: 85vh;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .correspondence {
+        display: none;
+    }
+
+    .chats {
+        width: 100%;
+        border: none;
+    }
+
+    .message {
+        height: 79vh;
+    }
+}

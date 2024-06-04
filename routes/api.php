@@ -2,6 +2,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\FriendController;
 use App\Http\Controllers\Api\FriendRequestController;
+use App\Http\Controllers\Api\MessagesController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,9 +37,14 @@ Route::post('/deleteFriend/{id}', [FriendController::class, 'deleteFriends']);
 Route::get('/users', [UserController::class, 'getAll']);
 Route::post('/getAllForFriends', [UserController::class, 'getAllForFriends']);
 Route::post('/editProfile/{id}', [UserController::class, 'editUser']);
+Route::get('/loadInfoUser/{id}', [UserController::class, 'loadInfoUser']);
 
 Route::post('/friendsRequestInbox', [FriendRequestController::class, 'getAllInpox']);
 Route::post('/friendsRequestOutbox', [FriendRequestController::class, 'getAllOutbox']);
 Route::post('/addFriendRequest', [FriendRequestController::class, 'addFriendRequest']);
 Route::post('/editState/{id}', [FriendRequestController::class, 'editState']);
 Route::get('/deleteFriendRequest/{id}', [FriendRequestController::class, 'deleteOutbox']);
+
+Route::post('/messages', [MessagesController::class, 'getAllChats']);
+Route::post('/getAllMessagesInChat', [MessagesController::class, 'getAllMessagesInChat']);
+Route::post('/addMessages', [MessagesController::class, 'addMessages']);

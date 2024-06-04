@@ -74,4 +74,10 @@ class UserController extends Controller
     }
 
   }
+  public function loadInfoUser(Request $request, string $id)
+  {
+    $user = User::where("id", $id)->first();
+    return response(compact('user'));
+  }
+
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Friend;
 use App\FriendsRequest;
+use App\Message;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -56,5 +57,14 @@ class User extends \TCG\Voyager\Models\User
   public function friendsTwo()
   {
     return $this->hasMany(Friend::class, 'idTwoUser');
+  }
+  public function sentMessages()
+  {
+    return $this->hasMany(Message::class, 'idUserSender');
+  }
+
+  public function receivedMessages()
+  {
+    return $this->hasMany(Message::class, 'idUserRecipient');
   }
 }

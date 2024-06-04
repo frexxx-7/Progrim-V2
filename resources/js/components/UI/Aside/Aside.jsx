@@ -48,11 +48,11 @@ const Aside = () => {
             <Link to={"/news"}>Новости</Link>
           </li>
           <li>
-            <Link to={"/news"}>Организации</Link>
+            <Link to={"/organizations"}>Организации</Link>
 
           </li>
           <li>
-            <Link to={"/news"}>Сообщения</Link>
+            <Link to={"/messages"}>Сообщения</Link>
 
           </li>
           <li>

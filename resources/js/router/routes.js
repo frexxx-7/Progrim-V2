@@ -6,6 +6,8 @@ import News from "../pages/News/News";
 import Profile from "../pages/Profile/Profile";
 import Registration from "../pages/Registration/Registration";
 import EditProfile from "../pages/EditProfile/EditProfile";
+import Messages from "../pages/Messages/Messages";
+import Organizations from "../pages/Organizations/Organizations";
 
 export const publicRoutes = [
   { path: "/signin", Component: Autorization },
@@ -18,4 +20,7 @@ export const privateRoutes = [
   { path: "/profile", Component: Main, childComponent: Profile },
   { path: "/friends", Component: Main, childComponent: Friends },
   { path: "/editProfile", Component: Main, childComponent: EditProfile },
+  { path: "/messages", Component: Main, childComponent: Messages },
+  { path: "/messages/:id", Component: Main, childComponent: Messages },
+  { path: "/organizations", Component: Main, childComponent: Organizations },
 ];
