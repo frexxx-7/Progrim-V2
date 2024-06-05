@@ -7,13 +7,15 @@ body {
 }
 
 .app_background {
-    background-color: black;
-    background: linear-gradient(-45deg, #000000, #414141);
+    background-color: var(--main_color);
+    background: linear-gradient(-45deg, var(--main_color), var(--additional_color));
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
     min-width: 100vw;
     height: 100vh;
     box-sizing: border-box;
+    position: relative;
+    filter: blur(75px);
 }
 
 @keyframes gradient {
@@ -30,9 +32,43 @@ body {
     }
 }
 
+.app_container {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+}
+.app_content{
+  min-width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.v2::after {
+    position: fixed;
+    content: "V2";
+    color: var(--font_color);
+    opacity: .14;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 200px;
+    box-sizing: border-box;
+    font-weight: bold;
+    top: 0;
+    left: 0;
+}
+
 .app_background::after {
     content: "";
-    background-image: url("./Vector.svg");
+    background-color: var(--main_color);
+    -webkit-mask-image: url("./Vector.svg");
+    mask-image: url("./Vector.svg");
+    mask-size: cover;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -41,10 +77,10 @@ body {
     left: -627px;
     width: 1954px;
     height: 1910px;
-    filter: blur(150px);
     opacity: .5;
     animation: rotate 10s linear infinite forwards;
     transform-origin: center;
+    filter: blur(150px);
 }
 
 @keyframes rotate {
@@ -57,21 +93,6 @@ body {
     50% {
         transform: rotate(180deg);
     }
-}
-
-.app_background::before {
-    position: fixed;
-    content: "V2";
-    color: rgba($color: #fff, $alpha: .04);
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 200px;
-    box-sizing: border-box;
-    z-index: 0;
-    font-weight: bold;
 }
 
 .main {

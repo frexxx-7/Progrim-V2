@@ -12,9 +12,9 @@ const Settings = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const { user } = useStateContext()
   const { t } = useTranslation()
-  const [mainColor, setMainColor] = useState(useSelector(state => state.changeColors.mainColor));
-  const [fontColor, setFontColor] = useState(useSelector(state => state.changeColors.fontColor));
-  const [additionalColor, setAdditionalColor] = useState(useSelector(state => state.changeColors.additionalColor));
+  const [mainColor_, setMainColor_] = useState(useSelector(state => state.changeColors.mainColor));
+  const [fontColor_, setFontColor_] = useState(useSelector(state => state.changeColors.fontColor));
+  const [additionalColor_, setAdditionalColor_] = useState(useSelector(state => state.changeColors.additionalColor));
   const dispatch = useDispatch();
 
   const _changeLanguage = (lang) => {
@@ -25,6 +25,12 @@ const Settings = () => {
     dispatch(setMainColor(mainColor))
     dispatch(setFontColor(fontColor))
     dispatch(setAdditionalColor(additionalColor))
+    localStorage.setItem("main_color", mainColor_)
+    localStorage.setItem("font_color", fontColor_)
+    localStorage.setItem("additional_color", additionalColor_)
+    document.body.style.setProperty('--main_color', mainColor_)
+    document.body.style.setProperty('--font_color', fontColor_)
+    document.body.style.setProperty('--additional_color', additionalColor_)
   }
 
   const switchLanguage = async (lang) => {
@@ -37,6 +43,57 @@ const Settings = () => {
     }
   };
 
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .${classes.exampleBackground}::after {
+        background-color: ${mainColor_};      
+      }
+    `;
+
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, [mainColor_]);
+
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .${classes.exampleButton}:hover {
+        background-color: ${mainColor_}!important; 
+      }
+    `;
+    console.log(style);
+
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, [mainColor_])
+
+  useEffect(() => {
+    const style = document.createElement('style');
+
+    style.innerHTML = `
+    .${classes.exampleButton} {
+      color: ${fontColor_}!important; 
+    }
+      .${classes.exampleInput}::-webkit-input-placeholder {
+        color: ${fontColor_}!important; 
+      }
+      .${classes.exampleInput}::-moz-placeholder {
+        color: ${fontColor_}!important; 
+      }
+    `;
+    console.log(style);
+
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, [fontColor_])
 
   return (
     <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)} className={classes.tabs}>
@@ -54,34 +111,37 @@ const Settings = () => {
             <div className={classes.editColorItem}>
               <p className={classes.editColorTitle}>Главный цвет:</p>
               <div className={classes.editColorContainer}>
-                <HexColorPicker color={mainColor} onChange={setMainColor} />
+                <HexColorPicker color={mainColor_} onChange={setMainColor_} />
               </div>
             </div>
             <div className={classes.editColorItem}>
               <p className={classes.editColorTitle}>Цвет шрифт:</p>
               <div className={classes.editColorContainer}>
-                <HexColorPicker color={fontColor} onChange={setFontColor} />
+                <HexColorPicker color={fontColor_} onChange={setFontColor_} />
               </div>
             </div>
             <div className={classes.editColorItem}>
               <p className={classes.editColorTitle}>Дополнитель цвет:</p>
               <div className={classes.editColorContainer}>
-                <HexColorPicker color={additionalColor} onChange={setAdditionalColor} />
+                <HexColorPicker color={additionalColor_} onChange={setAdditionalColor_} />
               </div>
             </div>
           </div>
           <div className={classes.exampleContainer}>
-            <div className={classes.example} style={{ background: `linear-gradient(-45deg, ${mainColor}, ${additionalColor})`, backgroundColor: { mainColor } }}>
-              <div className={classes.exampleBackground} >
+            <div className={classes.example} style={{ background: `linear-gradient(-45deg, ${mainColor_}, ${additionalColor_})`, backgroundColor: { mainColor: mainColor_ } }}>
+              <div className={classes.exampleBackground}>
               </div>
               <div className={classes.exampleBackgroundContainer}>
-                <p style={{ color: fontColor }}>Примерный текст</p>
-                <p style={{ color: fontColor }}>1 2 3 4 5 6 7 8 9 0</p>
-                <button>Кнопка</button>
-                <input type="text" value={"Текстовое поле"} />
+                <p style={{ color: fontColor_, fontWeight:500 }}>Примерный текст</p>
+                <p style={{ color: fontColor_, fontWeight:500 }}>1 2 3 4 5 6 7 8 9 0</p>
+                <button className={classes.exampleButton}>Кнопка</button>
+                <input className={classes.exampleInput} type="text" style={{ color: fontColor_, borderColor: fontColor_ }} placeholder={"Текстовое поле"} />
               </div>
             </div>
           </div>
+        </div>
+        <div className={classes.saveButton}>
+          <button onClick={()=>_changeColors(mainColor_, fontColor_,additionalColor_)}>Сохранить</button>
         </div>
       </TabPanel>
       <TabPanel className={classes.tabPanel}>
