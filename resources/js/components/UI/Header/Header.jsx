@@ -1,8 +1,11 @@
 import React from 'react'
 import classes from './Header.module.scss'
 import Aside from '../Aside/Aside'
+import { useLocation } from 'react-router-dom'
 
 const Header = () => {
+  const location = useLocation()
+  
   return (
     <div className={classes.header}>
       <div className={classes.header_icon}>
@@ -10,7 +13,10 @@ const Header = () => {
         <img src="./icon.png" alt="icon" />
         <p>GRIM</p>
       </div>
-      <Aside />
+      {
+        location.pathname != '/signin' && location.pathname != 'signup' &&
+        <Aside />
+      }
     </div>
   )
 }

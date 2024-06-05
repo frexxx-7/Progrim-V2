@@ -82,8 +82,8 @@ return [
     |
     */
 
-    'locale' => 'en',
-
+    'locale' => 'ru',
+    'locales' => ['en' => 'English', 'ru' => 'Russian'],
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

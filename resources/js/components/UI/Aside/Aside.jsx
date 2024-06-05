@@ -1,25 +1,48 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classes from './Aside.module.scss'
 import { useStateContext } from '../../../context/ContextProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axiosCLient from '../../../axios.client';
 
 const Aside = () => {
-  const { user, setUser, setToken } = useStateContext()
-  const [showAside, setShowAside] = useState(false)
+  const { user, setUser, setToken } = useStateContext();
+  const [showAside, setShowAside] = useState(false);
+  const asideRef = useRef(null);
+  const location = useLocation()
 
   const onLogout = (ev) => {
-    ev.preventDefault()
+    ev.preventDefault();
 
     axiosCLient.post('/logout')
       .then(() => {
-        setUser({})
-        setToken(null)
-      })
-  }
+        setUser({});
+        setToken(null);
+      });
+  };
+
+  const handleClickOutside = (event) => {
+    if (asideRef.current && !asideRef.current.contains(event.target)) {
+      setShowAside(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showAside) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showAside]);
+  
+  useEffect(()=>{
+    setShowAside(false)
+  }, [location])
 
   return (
-    <aside className={classes.aside}>
+    <aside ref={asideRef} className={classes.aside}>
       <div className={classes.aside_button} onClick={() => setShowAside(!showAside)}>
         {
           showAside ?
@@ -33,12 +56,12 @@ const Aside = () => {
               <path d="M4 6L20 6" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
             </svg>
         }
-
-
       </div>
       <div className={classes.aside_content} style={{ width: showAside ? "20vw" : "0vw", opacity: showAside ? "1" : "0", padding: showAside ? "20px" : "0" }}>
         <div className={classes.you_info}>
-          <Link to={"/profile"} className={classes.user_login}> <img src={"/storage/" + user.avatar} alt="" /> {user.name}</Link>
+          <Link to={"/profile"} className={classes.user_login}>
+            <img src={"/storage/" + user.avatar} alt="" /> {user.name}
+          </Link>
         </div>
         <ul>
           <li>
@@ -49,14 +72,15 @@ const Aside = () => {
           </li>
           <li>
             <Link to={"/organizations"}>Организации</Link>
-
           </li>
           <li>
             <Link to={"/messages"}>Сообщения</Link>
-
           </li>
           <li>
             <Link to={"/friends"}>Друзья</Link>
+          </li>
+          <li className={classes.settingLink}>
+            <Link to={"/settings"}>Настройки</Link>
           </li>
           <li className={classes.exitLink}>
             <a onClick={onLogout}>Выход</a>
@@ -64,7 +88,7 @@ const Aside = () => {
         </ul>
       </div>
     </aside>
-  )
-}
+  );
+};
 
-export default Aside
+export default Aside;

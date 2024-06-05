@@ -22,7 +22,7 @@ const AppRouter = () => {
   return (
     <SwitchTransition>
       <CSSTransition nodeRef={nodeRef} key={location.pathname} classNames="fade" timeout={300} unmountOnExit >
-        <div ref={nodeRef}>
+        <div ref={nodeRef} style={{height:"100%"}}>
 
           {
             user && token

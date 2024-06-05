@@ -18,11 +18,11 @@ class FriendRequestController extends Controller
 
     $friendsRequests = FriendsRequest::where('idSender', $userId)
       ->whereNotIn('state', ['confirmed', 'refused'])
-      ->with('recipient') // Eager load the recipient relationship
+      ->with('recipient') 
       ->get();
     $users = $friendsRequests->map(function ($friendRequest) {
-      $recipientData = $friendRequest->recipient->toArray(); // Convert recipient data to array
-      $recipientData['friendsRequestId'] = $friendRequest->id; // Add FriendsRequest ID to the array
+      $recipientData = $friendRequest->recipient->toArray(); 
+      $recipientData['friendsRequestId'] = $friendRequest->id;
       return $recipientData;
     });
     return response(compact("users"));

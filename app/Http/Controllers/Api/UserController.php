@@ -10,6 +10,8 @@ use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -34,22 +36,39 @@ class UserController extends Controller
     return response(compact("users"));
   }
 
+
   public function editUser(EditUserRequest $request, string $id)
-  {
+{
     $data = $request->all();
+    
+    if (!empty($data['avatar'])) {
+        list($meta, $avatarContent) = explode(',', $data['avatar']);
+        $avatarContent = base64_decode($avatarContent);
+        $extension = '';
+        if (preg_match('/^data:image\/(\w+);base64,/', $data['avatar'], $type)) {
+            $extension = strtolower($type[1]); // jpg, png, gif, etc.
+        }
+        $fileName = Str::random(10) . '.' . $extension;
+        $directory = 'users/' . now()->format('FY');
+        Storage::disk('public')->put("$directory/$fileName", $avatarContent);
+        $avatarPath = "/$directory/$fileName";
+    } else {
+        $avatarPath = null;
+    }
 
     try {
-      $user = User::where('id', $id)->update([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'quote' => $data['quote'],
-      ]);
+        User::where('id', $id)->update([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'quote' => $data['quote'],
+            'avatar' => $avatarPath,
+        ]);
+        $user = User::find($id);
     } catch (\Throwable $th) {
-      return response($th->getMessage());
+        return response($th->getMessage(), 500);
     }
-    return response(compact("user"));
-  }
-  public function updatePassword(ChangePasswordRequest $request)
+    return response()->json(['user' => $user, 'message' => 'Данные изменены'], 200);
+}  public function updatePassword(ChangePasswordRequest $request)
   {
     try {
       $user = $request->user();

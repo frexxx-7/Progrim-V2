@@ -8,6 +8,7 @@ import Registration from "../pages/Registration/Registration";
 import EditProfile from "../pages/EditProfile/EditProfile";
 import Messages from "../pages/Messages/Messages";
 import Organizations from "../pages/Organizations/Organizations";
+import Settings from "../pages/Settings/Settings";
 
 export const publicRoutes = [
   { path: "/signin", Component: Autorization },
@@ -23,4 +24,5 @@ export const privateRoutes = [
   { path: "/messages", Component: Main, childComponent: Messages },
   { path: "/messages/:id", Component: Main, childComponent: Messages },
   { path: "/organizations", Component: Main, childComponent: Organizations },
+  { path: "/settings", Component: Main, childComponent: Settings },
 ];

@@ -1,0 +1,28 @@
+@import '../../../assets/scss/mixins.scss';
+
+.editPhoto {
+    width: 500px;
+
+    img {
+        width: 500px;
+        height: 500px;
+        object-position: 50% 50%;
+        object-fit: cover
+    }
+
+    .EditPhotoInput {
+        @include button;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .editPhoto {
+        width: auto;
+        height: 85vw;
+
+        img {
+            width: 85vw;
+            height: 85vw;
+        }
+    }
+}

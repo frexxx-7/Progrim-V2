@@ -1,7 +1,10 @@
 import React from 'react';
 import classes from './MainPage.module.scss';
+import { useSelector } from 'react-redux';
 
 const MainPage = () => {
+  const lang_ = useSelector(state => state.lang.lang)
+  console.log(lang_);
   return (
     <div className={classes.mainContainer}>
       <header className={classes.header}>

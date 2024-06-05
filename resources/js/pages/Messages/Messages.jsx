@@ -52,24 +52,26 @@ const Messages = () => {
   }, [selestPage])
 
   return (
-    <div className={classes.message}>
-      <div className={classes.chats} id="chats">
-        <div className={classes.header}>
-          <h2>Чаты</h2>
+    <div className={classes.mainContent}>
+      <div className={classes.message}>
+        <div className={classes.chats} id="chats">
+          <div className={classes.header}>
+            <h2>Чаты</h2>
+          </div>
+          <div className={classes.chatsList}>
+            {loadingMessages ? <Loader /> :
+              !messages
+                ?
+                <div className={classes.noChatsDiv}><h2 className={classes.noChats}>No chats</h2></div>
+                :
+                messages && Object.entries(messages).map(([key, value]) => (
+                  <MessagesItem key={key} value={value} />
+                ))
+            }
+          </div>
         </div>
-        <div className={classes.chatsList}>
-          {loadingMessages ? <Loader /> :
-            !messages
-              ?
-              <div className={classes.noChatsDiv}><h2 className={classes.noChats}>No chats</h2></div>
-              :
-              messages && Object.entries(messages).map(([key, value]) => (
-                <MessagesItem key={key} value={value} />
-              ))
-          }
-        </div>
+        {switchPage()}
       </div>
-      {switchPage()}
     </div>
   )
 }

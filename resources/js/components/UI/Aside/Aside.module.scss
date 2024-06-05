@@ -42,7 +42,11 @@
     height: 40px;
 
     img {
-        max-height: 100%;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: 50% 50%;
     }
 }
 
@@ -75,4 +79,8 @@
 .exitLink{
   position: absolute;
   bottom: 0;
+}
+.settingLink{
+  position: absolute;
+  bottom: 30px;
 }
