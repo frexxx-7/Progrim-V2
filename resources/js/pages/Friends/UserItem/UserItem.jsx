@@ -3,9 +3,11 @@ import { NavLink } from 'react-router-dom'
 import classes from './UserItem.module.scss'
 import { useStateContext } from '../../../context/ContextProvider'
 import axiosCLient from '../../../axios.client'
+import { useTranslation } from 'react-i18next'
 
 const UserItem = ({ userInfo, page, setRerender }) => {
   const { user } = useStateContext()
+  const { t } = useTranslation()
 
   const deleteFriendRequest = () => {
     axiosCLient.get(`/deleteFriendRequest/${userInfo.friendsRequestId}`)
@@ -80,9 +82,9 @@ const UserItem = ({ userInfo, page, setRerender }) => {
 
               :
               page == "outbox" ?
-                "Отмена"
+                t("friends.cancelButton")
                 :
-                'Добавить'
+                t("friends.addButton")
           }
         </a>
       </div>

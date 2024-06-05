@@ -7,12 +7,14 @@ import OpenMessages from './OpenMessages/OpenMessages'
 import ChatsImage from './ChatImage'
 import { useStateContext } from '../../context/ContextProvider'
 import axiosCLient from '../../axios.client'
+import { useTranslation } from 'react-i18next'
 
 const Messages = () => {
   const { user } = useStateContext()
   const [selestPage, setSelectPage] = useState(0)
   const [messages, setMessages] = useState({})
   const [loadingMessages, setLoadingMessages] = useState(true)
+  const { t } = useTranslation()
 
   const loadMessages = () => {
     const payload = {
@@ -56,7 +58,7 @@ const Messages = () => {
       <div className={classes.message}>
         <div className={classes.chats} id="chats">
           <div className={classes.header}>
-            <h2>Чаты</h2>
+            <h2>{t("messages.title")}</h2>
           </div>
           <div className={classes.chatsList}>
             {loadingMessages ? <Loader /> :

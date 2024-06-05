@@ -1,0 +1,73 @@
+{
+  "welcome":"Welcome to Progrim V2",
+
+
+  "follow": "Follow news and organizations!",
+
+  "profile":{
+    "editButton": "Edit"
+  },
+
+  "editProfile":{
+    "title":"Edit profile",
+    "login":"Login",
+    "email":"Email",
+    "quote":"Quote",
+    "changePassword":"Change password",
+    "oldPassword":"Old password",
+    "newPassword":"New password",
+    "repeatPassword": "Repeat password",
+    "saveChanges": "Save changes"
+  },
+
+  "aside":{
+    "main":"Main",
+    "news":"News",
+    "organizations":"Organizations",
+    "messages":"Messages",
+    "friends":"Friends",
+    "settings":"Settings",
+    "exit":"Exit"
+  },
+
+  "news":{
+    "titleGl":"Global News",
+    "keyword":"Keyword",
+    "sortby": "Sort by",
+    "selectLang": "Select language"
+  },
+
+  "messages":{
+    "title" : "Chats"
+  },
+
+  "friends":{
+    "myFriendsTitle": "Friend list",
+    "inboxTitle": "Inbox requests",
+    "outboxTitle": "Outbox requests",
+    "searchFriendsTitle": "Search friends",
+    "addButton": "Add",
+    "messageButton": "Message",
+    "deleteButton": "Delete",
+    "searchInput": "Search",
+    "cancelButton": "Cancel",
+    "noFriends": "No friends",
+
+    "aside":{
+      "myFriends": "My friends",
+      "inbox": "Inbox",
+      "outbox": "Outbox",
+      "searchFriends": "Search Friends"
+    }
+  },
+
+  "settings":{
+    "aside":{
+      "theme": "Theme",
+      "language": "Language"
+    },
+    "language":{
+      "selectLang": "Select language"
+    }
+  }
+}

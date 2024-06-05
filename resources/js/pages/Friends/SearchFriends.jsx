@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import classes from './Friends.module.scss'
 import UsersList from './UserList/UserList'
 import Loader from '../../components/UI/Loader/Loader'
+import { useTranslation } from 'react-i18next'
 
 const SearchFriends = ({visibleLoader, friends}) => {
+  const { t } = useTranslation()
+
   return (
     <>
       <div className={classes.friendListH2}>
-        <h2>Поиск друзей</h2>
+        <h2>{t("friends.searchFriendsTitle")}</h2>
       </div>
 
       <div className={classes.frinedsListFriend}>

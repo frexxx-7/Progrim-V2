@@ -5,10 +5,11 @@ import { useStateContext } from '../../context/ContextProvider'
 import classes from './EditProfile.module.scss'
 import Modal from '../../components/UI/Modal/Modal'
 import EditPhoto from './EditPhoto/EditPhoto'
+import { useTranslation } from 'react-i18next'
 
 const EditProfile = () => {
   const { user, setUser } = useStateContext()
-  console.log(user);
+  const { t } = useTranslation()
   const [resetPasswordChecked, setResetPasswordChecked] = useState(false)
   const [errors, setErrors] = useState({})
   const [image, setImage] = useState()
@@ -24,22 +25,23 @@ const EditProfile = () => {
   const repeatNewPasswordRef = useRef()
 
   const resetPasswordCheckBoxRef = useRef()
-  useEffect(()=>{
+  useEffect(() => {
     user.avatar && setImage("storage/" + user.avatar)
   }, [user])
   useEffect(() => {
     if (Object.keys(user).length != 0) {
       nameRef.current.value = user.name ? user.name : ""
-      emailRef.current.value = user.name ? user.email : ""
+      emailRef.current.value = user.email ? user.email : ""
+      quoteRef.current.value = user.quote ? user.quote : ""
     }
   }, [user])
-
+  console.log("storage/" + image != user.avatar);
   const editProfile = () => {
     const payload = {
       name: nameRef.current.value,
       email: emailRef.current.value,
       quote: quoteRef.current.value,
-      avatar: image,
+      avatar: image != "storage/" + user.avatar ? image : undefined
     }
     axiosCLient.post(`/editProfile/${user.id}`, payload)
       .then(({ data }) => {
@@ -83,30 +85,30 @@ const EditProfile = () => {
   return (
     <div className={classes.mainContent}>
       <div className={classes.titile}>
-        <h1>Редактировать профиль</h1>
+        <h1>{t("editProfile.title")}</h1>
       </div>
       <div className={classes.profile_image} >
-        <img src={image} alt="" onClick={() => setModalPhoto(true)}/>
+        <img src={image} alt="" onClick={() => setModalPhoto(true)} />
       </div>
       <Modal visible={modalPhoto} setVisible={setModalPhoto}>
-        <EditPhoto photo={"storage/" + user.avatar} setImage={setImage} setVisible={setModalPhoto}/>
+        <EditPhoto photo={"storage/" + user.avatar} setImage={setImage} setVisible={setModalPhoto} />
       </Modal>
       <div className={classes.inputs}>
         <div className={classes.inputContainer}>
-          <label htmlFor='name'>Логин <span className={classes.star}>*</span></label>
+          <label htmlFor='name'>{t("editProfile.login")} <span className={classes.star}>*</span></label>
           <input type="text" ref={nameRef} name='name' className={classes.contactsInput} />
         </div>
         <div className={classes.inputContainer}>
-          <label htmlFor='email'>Email <span className={classes.star}>*</span></label>
+          <label htmlFor='email'>{t("editProfile.email")} <span className={classes.star}>*</span></label>
           <input type="text" ref={emailRef} name='email' className={classes.contactsInput} />
         </div>
         <div className={classes.inputContainer}>
-          <label htmlFor='quote'>Цитата <span className={classes.star}></span></label>
+          <label htmlFor='quote'>{t("editProfile.quote")} <span className={classes.star}></span></label>
           <input type="text" ref={quoteRef} name='quote' className={classes.contactsInput} />
         </div>
         <div className={classes.checkBoxContainer}>
           <input type="checkbox" className={classes.contactsCheckBox} ref={resetPasswordCheckBoxRef} onClick={(e) => setResetPasswordChecked(e.target.checked)} />
-          <p>Сменить пароль</p>
+          <p>{t("editProfile.changePassword")}</p>
         </div>
       </div>
       {
@@ -114,15 +116,15 @@ const EditProfile = () => {
           ?
           <div className={classes.resetPasswordContainer}>
             <div className={classes.inputContainer}>
-              <label htmlFor='oldpassword'>Старый пароль <span className={classes.star}>*</span></label>
+              <label htmlFor='oldpassword'>{t("editProfile.oldPassword")} <span className={classes.star}>*</span></label>
               <input type="password" ref={oldPasswordRef} name='oldpassword' className={classes.contactsInput} />
             </div>
             <div className={classes.inputContainer}>
-              <label htmlFor='newpassword'>Новый пароль <span className={classes.star}>*</span></label>
+              <label htmlFor='newpassword'>{t("editProfile.newPassword")} <span className={classes.star}>*</span></label>
               <input type="password" ref={newPasswordRef} name='newpassword' className={classes.contactsInput} />
             </div>
             <div className={classes.inputContainer}>
-              <label htmlFor='repeatpassword'>Повторите пароль <span className={classes.star}>*</span></label>
+              <label htmlFor='repeatpassword'>{t("editProfile.repeatPassword")} <span className={classes.star}>*</span></label>
               <input type="password" ref={repeatNewPasswordRef} name='repeatpassword' className={classes.contactsInput} />
             </div>
           </div>
@@ -136,7 +138,7 @@ const EditProfile = () => {
           ))}</div>
       }
       <div className={classes.saveButtonContainer}>
-        <button className={classes.saveButton} onClick={saveInfo}>Сохранить изменения</button>
+        <button className={classes.saveButton} onClick={saveInfo}>{t("editProfile.saveChanges")}</button>
       </div>
 
     </div>

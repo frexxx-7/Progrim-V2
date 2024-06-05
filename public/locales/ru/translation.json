@@ -1,0 +1,71 @@
+{
+  "welcome":"Добро пожаловать в Progrim V2",
+
+  "follow": "Следите за новостями и организанциями!",
+
+  "profile":{
+    "editButton": "Редактировать"
+  },
+
+  "editProfile":{
+    "title":"Редактировать профиль",
+    "login":"Логин",
+    "email":"Почта",
+    "quote":"Цитата",
+    "changePassword":"Сменить пароль",
+    "oldPassword":"Старый пароль",
+    "newPassword":"Новый пароль",
+    "repeatPassword": "Повторите пароль",
+    "saveChanges": "Сохранить изменения"
+  },
+
+  "aside":{
+    "main":"Главная",
+    "news":"Новости",
+    "organizations":"Организации",
+    "messages":"Сообщения",
+    "friends":"Друзья",
+    "settings":"Настройки",
+    "exit":"Выход"
+  },
+
+  "news":{
+    "titleGl":"Глобальные новости",
+    "keyword":"Ключевое слово",
+    "sortby": "Сортировать по",
+    "selectLang": "Выберите язык"
+  },
+
+  "messages":{
+    "title" : "Чаты"
+  },
+  "friends":{
+    "myFriendsTitle": "Список друзей",
+    "inboxTitle": "Входящие заявки",
+    "outboxTitle": "Исходящие заявки",
+    "searchFriendsTitle": "Поиск друзей",
+    "addButton": "Добавить",
+    "messageButton": "Сообщение",
+    "deleteButton": "Удалить",
+    "searchInput": "Поиск",
+    "cancelButton": "Отмена",
+    "noFriends": "Нет друзей",
+
+    "aside":{
+      "myFriends": "Мои друзья",
+      "inbox": "Входящие",
+      "outbox": "Исходящие",
+      "searchFriends": "Поиск друзей"
+    }
+  },
+
+  "settings":{
+    "aside":{
+      "theme": "Тема",
+      "language": "Язык"
+    },
+    "language":{
+      "selectLang": "Выберите язык"
+    }
+  }
+}

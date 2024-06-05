@@ -2,13 +2,15 @@ import React, { useEffect, useState, useRef } from 'react';
 import classes from './News.module.scss';
 import axios from 'axios';
 import NewsItem from '../../components/NewsItem/NewsItem';
+import { useTranslation } from 'react-i18next';
 
 const News = () => {
   const [news, setNews] = useState([]);
   const [word, setWord] = useState("программирование");
   const [sortBy, setSortBy] = useState('publishedAt');
   const [language, setLanguage] = useState('ru');
-  const [pageTitle, setPageTitle] = useState("Глобальные новости")
+  const { t } = useTranslation()
+  const [pageTitle, setPageTitle] = useState(t("news.titleGl"))
 
   const optionsSort = [
     { value: 'publishedAt', label: 'Дата публикации' },
@@ -71,12 +73,12 @@ const optionsLang = [
 
       <div className={classes.filterPanel}>
         <div className={classes.word}>
-          <p>Ключевое слово:</p>
+          <p>{t("news.keyword")}:</p>
           <input type="text" value={word} onChange={handleInputChange} />
         </div>
 
         <div className={classes.sortBy}>
-          <label htmlFor="sort-by">Сортировать по:</label>
+          <label htmlFor="sort-by">{t("news.sortby")}:</label>
           <div className={classes.select}>
 
             <select id="sort-by" value={sortBy} onChange={handleChangeSort}>
@@ -92,7 +94,7 @@ const optionsLang = [
         </div>
 
         <div className={classes.sortBy}>
-          <label htmlFor="lang">Выберите язык:</label>
+          <label htmlFor="lang">{t("news.selectLang")}:</label>
           <div className={classes.select}>
 
             <select id="lang" value={language} onChange={handleChangeLang}>

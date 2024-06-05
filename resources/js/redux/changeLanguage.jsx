@@ -1,7 +1,7 @@
 import { LANGUAGE } from "./constants";
 
 const defaultState = {
-  lang: window.navigator.language.split('-')[0]
+  lang: localStorage.getItem('lang') || "ru"
 }
 
 export const changeLanguage = (state = defaultState, action) => {

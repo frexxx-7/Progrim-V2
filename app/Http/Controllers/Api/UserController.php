@@ -38,37 +38,38 @@ class UserController extends Controller
 
 
   public function editUser(EditUserRequest $request, string $id)
-{
+  {
     $data = $request->all();
-    
+
     if (!empty($data['avatar'])) {
-        list($meta, $avatarContent) = explode(',', $data['avatar']);
-        $avatarContent = base64_decode($avatarContent);
-        $extension = '';
-        if (preg_match('/^data:image\/(\w+);base64,/', $data['avatar'], $type)) {
-            $extension = strtolower($type[1]); // jpg, png, gif, etc.
-        }
-        $fileName = Str::random(10) . '.' . $extension;
-        $directory = 'users/' . now()->format('FY');
-        Storage::disk('public')->put("$directory/$fileName", $avatarContent);
-        $avatarPath = "/$directory/$fileName";
+      list($meta, $avatarContent) = explode(',', $data['avatar']);
+      $avatarContent = base64_decode($avatarContent);
+      $extension = '';
+      if (preg_match('/^data:image\/(\w+);base64,/', $data['avatar'], $type)) {
+        $extension = strtolower($type[1]); // jpg, png, gif, etc.
+      }
+      $fileName = Str::random(10) . '.' . $extension;
+      $directory = 'users/' . now()->format('FY');
+      Storage::disk('public')->put("$directory/$fileName", $avatarContent);
+      $avatarPath = "/$directory/$fileName";
     } else {
-        $avatarPath = null;
+      $avatarPath = null;
     }
 
     try {
-        User::where('id', $id)->update([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'quote' => $data['quote'],
-            'avatar' => $avatarPath,
-        ]);
-        $user = User::find($id);
+      User::where('id', $id)->update([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'quote' => $data['quote'],
+        'avatar' => $avatarPath,
+      ]);
+      $user = User::find($id);
     } catch (\Throwable $th) {
-        return response($th->getMessage(), 500);
+      return response($th->getMessage(), 500);
     }
     return response()->json(['user' => $user, 'message' => 'Данные изменены'], 200);
-}  public function updatePassword(ChangePasswordRequest $request)
+  }
+  public function updatePassword(ChangePasswordRequest $request)
   {
     try {
       $user = $request->user();

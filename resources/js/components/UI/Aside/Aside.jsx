@@ -3,12 +3,15 @@ import classes from './Aside.module.scss'
 import { useStateContext } from '../../../context/ContextProvider';
 import { Link, useLocation } from 'react-router-dom';
 import axiosCLient from '../../../axios.client';
+import { useTranslation } from 'react-i18next';
 
 const Aside = () => {
   const { user, setUser, setToken } = useStateContext();
   const [showAside, setShowAside] = useState(false);
   const asideRef = useRef(null);
   const location = useLocation()
+  
+  const { t } = useTranslation()
 
   const onLogout = (ev) => {
     ev.preventDefault();
@@ -65,25 +68,25 @@ const Aside = () => {
         </div>
         <ul>
           <li>
-            <Link to={"/main"}>Главная</Link>
+            <Link to={"/main"}>{t("aside.main")}</Link>
           </li>
           <li>
-            <Link to={"/news"}>Новости</Link>
+            <Link to={"/news"}>{t("aside.news")}</Link>
           </li>
           <li>
-            <Link to={"/organizations"}>Организации</Link>
+            <Link to={"/organizations"}>{t("aside.organizations")}</Link>
           </li>
           <li>
-            <Link to={"/messages"}>Сообщения</Link>
+            <Link to={"/messages"}>{t("aside.messages")}</Link>
           </li>
           <li>
-            <Link to={"/friends"}>Друзья</Link>
+            <Link to={"/friends"}>{t("aside.friends")}</Link>
           </li>
           <li className={classes.settingLink}>
-            <Link to={"/settings"}>Настройки</Link>
+            <Link to={"/settings"}>{t("aside.settings")}</Link>
           </li>
           <li className={classes.exitLink}>
-            <a onClick={onLogout}>Выход</a>
+            <a onClick={onLogout}>{t("aside.exit")}</a>
           </li>
         </ul>
       </div>

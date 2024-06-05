@@ -5,9 +5,11 @@ import classes2 from './Friends.module.scss'
 import Loader from '../../components/UI/Loader/Loader'
 import axiosCLient from '../../axios.client'
 import { useStateContext } from '../../context/ContextProvider'
+import { useTranslation } from 'react-i18next'
 
 const FriendItem = ({ friend, setRerender }) => {
   const { user } = useStateContext()
+  const { t } = useTranslation()
 
   const deleteFriend = () => {
     const payload = {
@@ -37,7 +39,7 @@ const FriendItem = ({ friend, setRerender }) => {
           {
             window.innerWidth <= 620
               ? <i className="fa-regular fa-envelope"></i>
-              : 'Сообщение'
+              : t("friends.messageButton")
           }
 
         </NavLink>
@@ -46,7 +48,7 @@ const FriendItem = ({ friend, setRerender }) => {
           {
             window.innerWidth <= 620
               ? <i className="fa-solid fa-trash"></i>
-              : 'Удалить'
+              : t("friends.deleteButton")
           }
         </a>
 

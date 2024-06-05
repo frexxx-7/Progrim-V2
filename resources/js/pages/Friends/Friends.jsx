@@ -9,6 +9,7 @@ import { useStateContext } from '../../context/ContextProvider'
 import axiosCLient from '../../axios.client'
 import InboxFriends from './InboxFriends'
 import OutBoxFriends from './OutBoxFriends'
+import { useTranslation } from 'react-i18next'
 
 const Friends = () => {
   const [componentCh, setComponentCh] = useState(0)
@@ -17,6 +18,7 @@ const Friends = () => {
   const [friends, setFriends] = useState()
   const [searchVisible, setSearchVisible] = useState(false)
   const [rerender, setRerender] = useState();
+  const { t } = useTranslation()
 
   const dispatch = useDispatch();
 
@@ -78,7 +80,7 @@ const Friends = () => {
               {
                 window.innerWidth <= 620
                   ? <i className="fa-solid fa-user-group"></i>
-                  : 'Мои друзья'
+                  : t("friends.aside.myFriends")
               }
             </a></li>
             <li><a onClick={() => {
@@ -88,7 +90,7 @@ const Friends = () => {
               {
                 window.innerWidth <= 620
                   ? <i class="fa-solid fa-arrow-down"></i>
-                  : 'Входящие'
+                  : t("friends.aside.inbox")
               }
             </a></li>
             <li><a onClick={() => {
@@ -98,7 +100,7 @@ const Friends = () => {
               {
                 window.innerWidth <= 620
                   ? <i class="fa-solid fa-arrow-up"></i>
-                  : 'Исходящие'
+                  : t("friends.aside.outbox")
               }
             </a></li>
             <li><a onClick={() => {
@@ -108,7 +110,7 @@ const Friends = () => {
               {
                 window.innerWidth <= 620
                   ? <i className="fa-solid fa-magnifying-glass"></i>
-                  : 'Поиск друзей'
+                  : t("friends.aside.searchFriends")
               }
             </a></li>
             {
@@ -118,7 +120,7 @@ const Friends = () => {
                     type="text"
                     onChange={(e) => changeSearchQuery(e.target.value)}
                     className={classes.searchInput}
-                    placeholder='Поиск'
+                    placeholder={t("friends.searchInput")}
                   />
                 </li>
                 :

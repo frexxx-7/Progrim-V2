@@ -1,20 +1,20 @@
 import React from 'react';
 import classes from './MainPage.module.scss';
-import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const MainPage = () => {
-  const lang_ = useSelector(state => state.lang.lang)
-  console.log(lang_);
+  const { t } = useTranslation()
+
   return (
     <div className={classes.mainContainer}>
       <header className={classes.header}>
-        <h1>Добро пожаловать в Progrim V2</h1>
-        <p>Следите за новостями и организанциями!</p>
+        <h1>{t("welcome")}</h1>
+        <p>{t("follow")}</p>
       </header>
-      
+
       <section className={classes.features}>
         <div className={classes.feature}>
-          <img src="https://cdn-icons-png.flaticon.com/512/5738/5738173.png"/>
+          <img src="https://cdn-icons-png.flaticon.com/512/5738/5738173.png" />
           <h2>Оптимизируйте управление проектами с помощью Progrim V2</h2>
         </div>
         <div className={classes.feature}>
@@ -38,7 +38,7 @@ const MainPage = () => {
           <h2>Укрепите имидж вашей организации через публикацию достижений и мероприятий</h2>
         </div>
       </section>
-      
+
       <footer className={classes.footer}>
         <p>&copy; 2024 Progrim V2</p>
       </footer>

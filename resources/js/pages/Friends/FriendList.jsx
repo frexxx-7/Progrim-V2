@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import classes from './Friends.module.scss'
 import Loader from '../../components/UI/Loader/Loader'
 import FriendsItem from './FriendsItem'
+import { useTranslation } from 'react-i18next'
 
 
 const FriendsList = ({ visibleLoader, friends, setRerender }) => {
+  const { t } = useTranslation()
 
   if (visibleLoader)
     return <Loader />
@@ -13,7 +15,7 @@ const FriendsList = ({ visibleLoader, friends, setRerender }) => {
   return (
     <>
       <div className={classes.friendListH2}>
-        <h2>Список друзей</h2>
+        <h2>{t("friends.myFriendsTitle")}</h2>
       </div>
       <div className={classes.friendListDiv}>
         <div className={classes.allFriends}>
@@ -22,7 +24,7 @@ const FriendsList = ({ visibleLoader, friends, setRerender }) => {
               ?
               <div className={classes.noFriendsDiv}>
                 <h2 className={classes.noFriends}>
-                  Нет друзей
+                  {t("friends.noFriends")}
                 </h2>
               </div>
               :
