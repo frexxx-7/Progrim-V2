@@ -39,6 +39,7 @@ Route::get('/users', [UserController::class, 'getAll']);
 Route::post('/getAllForFriends', [UserController::class, 'getAllForFriends']);
 Route::post('/editProfile/{id}', [UserController::class, 'editUser']);
 Route::get('/loadInfoUser/{id}', [UserController::class, 'loadInfoUser']);
+Route::post('/updateAdditionalInfo/{id}', [UserController::class, 'editUserAdditionalInfo']);
 
 Route::post('/friendsRequestInbox', [FriendRequestController::class, 'getAllInpox']);
 Route::post('/friendsRequestOutbox', [FriendRequestController::class, 'getAllOutbox']);

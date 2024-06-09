@@ -12,7 +12,7 @@ const Profile = () => {
   return (
     <div className={classes.profile}>
       <div className={classes.profile_posts}>
-
+        {user.addittionalInfo && <div dangerouslySetInnerHTML={{ __html: user.addittionalInfo }} />}
       </div>
       <div className={classes.profile_info}>
         <div className={classes.profile_image}>

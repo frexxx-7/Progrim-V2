@@ -36,7 +36,11 @@
         i {
 
             display: inline-block;
-            color: #fff;
+            color: var(--font_color);
+
+            &:hover {
+                cursor: pointer;
+            }
 
             &::before {
                 font-size: 70px;
@@ -81,6 +85,91 @@
         }
     }
 }
+
+.aiChatContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.aiChat {
+    width: 60%;
+    height: 80%;
+    border-radius: 20px;
+    border: 1px solid #fff;
+}
+
+.aiChatHeaderAvatar {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+}
+
+.aiChatHeader {
+    height: 40px;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.aiChatHeaderName {
+    color: #fff;
+    font-weight: 500;
+}
+
+.aiChatMessagerContainer {
+    width: 100%;
+    height: calc(100% - 40px);
+}
+
+.aiChatMessageInputContainer {
+    height: 7%;
+    width: 100%;
+    border-top: 1px solid #fff;
+    padding: 5px;
+    padding-top: 2px;
+    box-sizing: border-box;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+
+    input {
+        @include input;
+        border: none;
+        width: 100%;
+        height: 90%;
+
+        &:focus {
+            outline: none
+        }
+    }
+
+    button {
+        @include button;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.aiChatMessages {
+    height: 93%;
+    width: 100%;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+}
+
 
 @media screen and (max-width: 1130px) {
     .message {

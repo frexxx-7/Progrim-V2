@@ -40,14 +40,14 @@
     &_name {
         width: 100%;
         font-size: 20px;
-        color: #fff;
+        color: var(--font_color);
         font-weight: 600;
     }
 
     &_quote {
         width: 100%;
         font-size: 18px;
-        color: #fff;
+        color: var(--font_color);
         font-weight: 200;
     }
 
@@ -57,7 +57,7 @@
         button {
             width: 100%;
             @include button;
-            border: 1px solid rgba(192, 192, 192, .4);
+            border: 1px solid var(--additional_color);
         }
     }
 }

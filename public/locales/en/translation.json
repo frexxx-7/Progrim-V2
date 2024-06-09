@@ -17,7 +17,10 @@
     "oldPassword":"Old password",
     "newPassword":"New password",
     "repeatPassword": "Repeat password",
-    "saveChanges": "Save changes"
+    "saveChanges": "Save changes",
+    "addittionalButton": "Add addittional info",
+    "addittionalTitle": "Additional info",
+    "backButton": "Back"
   },
 
   "aside":{
@@ -38,7 +41,9 @@
   },
 
   "messages":{
-    "title" : "Chats"
+    "title" : "Chats",
+    "aiMessage" : "Hello, I am ChatGPT!",
+    "sendMessage": "Send message"
   },
 
   "friends":{

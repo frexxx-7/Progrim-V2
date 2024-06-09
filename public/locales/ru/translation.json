@@ -16,7 +16,10 @@
     "oldPassword":"Старый пароль",
     "newPassword":"Новый пароль",
     "repeatPassword": "Повторите пароль",
-    "saveChanges": "Сохранить изменения"
+    "saveChanges": "Сохранить изменения",
+    "addittionalButton": "Добавить дополнительную информацию",
+    "addittionalTitle": "Дополнительная информация",
+    "backButton": "Назад"
   },
 
   "aside":{
@@ -37,7 +40,9 @@
   },
 
   "messages":{
-    "title" : "Чаты"
+    "title" : "Чаты",
+    "aiMessage" : "Привет, я ChatGPT!",
+    "sendMessage": "Отправить сообщение"
   },
   "friends":{
     "myFriendsTitle": "Список друзей",

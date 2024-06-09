@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import axiosCLient from '../../axios.client'
 import { useRef } from 'react'
 import { useStateContext } from '../../context/ContextProvider'
@@ -6,6 +6,8 @@ import classes from './EditProfile.module.scss'
 import Modal from '../../components/UI/Modal/Modal'
 import EditPhoto from './EditPhoto/EditPhoto'
 import { useTranslation } from 'react-i18next'
+import { Jodit } from 'jodit'
+import JoditEditor from 'jodit-react'
 
 const EditProfile = () => {
   const { user, setUser } = useStateContext()
@@ -19,14 +21,26 @@ const EditProfile = () => {
   const nameRef = useRef()
   const emailRef = useRef()
   const quoteRef = useRef()
+  const editor = useRef(null);
 
   const oldPasswordRef = useRef()
   const newPasswordRef = useRef()
   const repeatNewPasswordRef = useRef()
 
   const resetPasswordCheckBoxRef = useRef()
+
+  const [openAdditionalInfo, setOpenAdditionalInfo] = useState(false)
+  const [addittionalInfo, setAddittionalInfo] = useState()
+
+  const config = useMemo(
+    () => ({
+      theme: 'dark'
+    })
+  );
+
   useEffect(() => {
     user.avatar && setImage("storage/" + user.avatar)
+    setAddittionalInfo(user.addittionalInfo)
   }, [user])
   useEffect(() => {
     if (Object.keys(user).length != 0) {
@@ -35,7 +49,7 @@ const EditProfile = () => {
       quoteRef.current.value = user.quote ? user.quote : ""
     }
   }, [user])
-  console.log("storage/" + image != user.avatar);
+
   const editProfile = () => {
     const payload = {
       name: nameRef.current.value,
@@ -82,66 +96,118 @@ const EditProfile = () => {
     } else
       editProfile()
   }
+
+  const saveAdditionalInfo = () => {
+    const payload = {
+      addittionalInfo: addittionalInfo
+    }
+    axiosCLient.post(`/updateAdditionalInfo/${user.id}`, payload)
+      .then(({ data }) => {
+        setErrors({ meessage: [data.message] })
+        user.addittionalInfo = addittionalInfo
+      })
+      .catch(err => {
+        const response = err.response
+        if (response && response.status === 422) {
+          setErrors(response.data.errors)
+        }
+      })
+  }
+
   return (
-    <div className={classes.mainContent}>
-      <div className={classes.titile}>
-        <h1>{t("editProfile.title")}</h1>
-      </div>
-      <div className={classes.profile_image} >
-        <img src={image} alt="" onClick={() => setModalPhoto(true)} />
-      </div>
-      <Modal visible={modalPhoto} setVisible={setModalPhoto}>
-        <EditPhoto photo={"storage/" + user.avatar} setImage={setImage} setVisible={setModalPhoto} />
-      </Modal>
-      <div className={classes.inputs}>
-        <div className={classes.inputContainer}>
-          <label htmlFor='name'>{t("editProfile.login")} <span className={classes.star}>*</span></label>
-          <input type="text" ref={nameRef} name='name' className={classes.contactsInput} />
-        </div>
-        <div className={classes.inputContainer}>
-          <label htmlFor='email'>{t("editProfile.email")} <span className={classes.star}>*</span></label>
-          <input type="text" ref={emailRef} name='email' className={classes.contactsInput} />
-        </div>
-        <div className={classes.inputContainer}>
-          <label htmlFor='quote'>{t("editProfile.quote")} <span className={classes.star}></span></label>
-          <input type="text" ref={quoteRef} name='quote' className={classes.contactsInput} />
-        </div>
-        <div className={classes.checkBoxContainer}>
-          <input type="checkbox" className={classes.contactsCheckBox} ref={resetPasswordCheckBoxRef} onClick={(e) => setResetPasswordChecked(e.target.checked)} />
-          <p>{t("editProfile.changePassword")}</p>
-        </div>
-      </div>
+    <>
       {
-        resetPasswordChecked
-          ?
-          <div className={classes.resetPasswordContainer}>
-            <div className={classes.inputContainer}>
-              <label htmlFor='oldpassword'>{t("editProfile.oldPassword")} <span className={classes.star}>*</span></label>
-              <input type="password" ref={oldPasswordRef} name='oldpassword' className={classes.contactsInput} />
+        !openAdditionalInfo ?
+          <div className={classes.mainContent}>
+            <div className={classes.titile}>
+              <h1>{t("editProfile.title")}</h1>
             </div>
-            <div className={classes.inputContainer}>
-              <label htmlFor='newpassword'>{t("editProfile.newPassword")} <span className={classes.star}>*</span></label>
-              <input type="password" ref={newPasswordRef} name='newpassword' className={classes.contactsInput} />
+            <div className={classes.profile_image} >
+              <img src={image} alt="" onClick={() => setModalPhoto(true)} />
             </div>
-            <div className={classes.inputContainer}>
-              <label htmlFor='repeatpassword'>{t("editProfile.repeatPassword")} <span className={classes.star}>*</span></label>
-              <input type="password" ref={repeatNewPasswordRef} name='repeatpassword' className={classes.contactsInput} />
+            <Modal visible={modalPhoto} setVisible={setModalPhoto}>
+              <EditPhoto photo={"storage/" + user.avatar} setImage={setImage} setVisible={setModalPhoto} />
+            </Modal>
+            <div className={classes.inputs}>
+              <div className={classes.inputContainer}>
+                <label htmlFor='name'>{t("editProfile.login")} <span className={classes.star}>*</span></label>
+                <input type="text" ref={nameRef} name='name' className={classes.contactsInput} />
+              </div>
+              <div className={classes.inputContainer}>
+                <label htmlFor='email'>{t("editProfile.email")} <span className={classes.star}>*</span></label>
+                <input type="text" ref={emailRef} name='email' className={classes.contactsInput} />
+              </div>
+              <div className={classes.inputContainer}>
+                <label htmlFor='quote'>{t("editProfile.quote")} <span className={classes.star}></span></label>
+                <input type="text" ref={quoteRef} name='quote' className={classes.contactsInput} />
+              </div>
+              <div className={classes.checkBoxContainer}>
+                <input type="checkbox" className={classes.contactsCheckBox} ref={resetPasswordCheckBoxRef} onClick={(e) => setResetPasswordChecked(e.target.checked)} />
+                <p>{t("editProfile.changePassword")}</p>
+              </div>
+            </div>
+            {
+              resetPasswordChecked
+                ?
+                <div className={classes.resetPasswordContainer}>
+                  <div className={classes.inputContainer}>
+                    <label htmlFor='oldpassword'>{t("editProfile.oldPassword")} <span className={classes.star}>*</span></label>
+                    <input type="password" ref={oldPasswordRef} name='oldpassword' className={classes.contactsInput} />
+                  </div>
+                  <div className={classes.inputContainer}>
+                    <label htmlFor='newpassword'>{t("editProfile.newPassword")} <span className={classes.star}>*</span></label>
+                    <input type="password" ref={newPasswordRef} name='newpassword' className={classes.contactsInput} />
+                  </div>
+                  <div className={classes.inputContainer}>
+                    <label htmlFor='repeatpassword'>{t("editProfile.repeatPassword")} <span className={classes.star}>*</span></label>
+                    <input type="password" ref={repeatNewPasswordRef} name='repeatpassword' className={classes.contactsInput} />
+                  </div>
+                </div>
+                :
+                ""
+            }
+            {errors &&
+              <div>
+                {Object.keys(errors).map(key => (
+                  <p className={classes.error} style={{ color: "red", fontWeight: "bold" }} key={key}>{errors[key][0]}</p>
+                ))}</div>
+            }
+            <div className={classes.saveButtonContainer}>
+              <button className={classes.saveButton} onClick={saveInfo}>{t("editProfile.saveChanges")}</button>
+            </div>
+
+            <div className={classes.editAddittionalInfoContainer}>
+              <button className={classes.editButton} onClick={() => setOpenAdditionalInfo(true)}>{t("editProfile.addittionalButton")}</button>
             </div>
           </div>
           :
-          ""
+          <div className={classes.mainContent}>
+            
+              <button className={classes.saveAdditionalButton} onClick={()=>setOpenAdditionalInfo(false)}>{t("editProfile.backButton")}</button>
+            <div className={classes.titile}>
+              <h1>{t("editProfile.addittionalTitle")}</h1>
+            </div>
+            <JoditEditor
+              ref={editor}
+              value={addittionalInfo}
+              config={config}
+              tabIndex={1}
+              onBlur={(newContent) => setAddittionalInfo(newContent)}
+              onChange={(newContent) => { setAddittionalInfo(newContent) }}
+            />
+            {errors &&
+              <div>
+                {Object.keys(errors).map(key => (
+                  <p className={classes.error} style={{ color: "red", fontWeight: "bold" }} key={key}>{errors[key][0]}</p>
+                ))}</div>
+            }
+            <div className={classes.saveAdditionalContainer}>
+              <button className={classes.saveAdditionalButton} onClick={saveAdditionalInfo}>{t("editProfile.saveChanges")}</button>
+            </div>
+          </div>
       }
-      {errors &&
-        <div>
-          {Object.keys(errors).map(key => (
-            <p className={classes.error} style={{ color: "red", fontWeight: "bold" }} key={key}>{errors[key][0]}</p>
-          ))}</div>
-      }
-      <div className={classes.saveButtonContainer}>
-        <button className={classes.saveButton} onClick={saveInfo}>{t("editProfile.saveChanges")}</button>
-      </div>
+    </>
 
-    </div>
   )
 }
 

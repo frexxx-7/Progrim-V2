@@ -99,5 +99,18 @@ class UserController extends Controller
     $user = User::where("id", $id)->first();
     return response(compact('user'));
   }
+  public function editUserAdditionalInfo(Request $request, string $id)
+  {
+    $data = $request->all();
 
+    try {
+      User::where('id', $id)->update([
+        'addittionalInfo' => $data['addittionalInfo']
+      ]);
+      $user = User::find($id);
+    } catch (\Throwable $th) {
+      return response($th->getMessage(), 500);
+    }
+    return response()->json(['user' => $user, 'message' => 'Данные изменены'], 200);
+  }
 }
