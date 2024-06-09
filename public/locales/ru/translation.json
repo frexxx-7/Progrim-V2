@@ -42,7 +42,8 @@
   "messages":{
     "title" : "Чаты",
     "aiMessage" : "Привет, я ChatGPT!",
-    "sendMessage": "Отправить сообщение"
+    "sendMessage": "Отправить сообщение",
+    "typing": "Печатает..."
   },
   "friends":{
     "myFriendsTitle": "Список друзей",

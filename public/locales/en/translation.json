@@ -43,7 +43,8 @@
   "messages":{
     "title" : "Chats",
     "aiMessage" : "Hello, I am ChatGPT!",
-    "sendMessage": "Send message"
+    "sendMessage": "Send message",
+    "typing": "Typing..."
   },
 
   "friends":{

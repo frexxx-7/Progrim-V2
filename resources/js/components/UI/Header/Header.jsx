@@ -16,7 +16,7 @@ const Header = () => {
         <p>GRIM</p>
       </div>
       {
-        location.pathname != '/signin' && location.pathname != 'signup' &&
+        location.pathname != '/signin' && location.pathname != '/signup' &&
         <Aside />
       }
     </div>

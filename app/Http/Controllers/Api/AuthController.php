@@ -7,6 +7,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
 use App\Models\User;
 use Auth;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -20,7 +21,7 @@ class AuthController extends Controller
       'email' => $data['email'],
       'password' => bcrypt($data['password']),
     ]);
-
+    event(new Registered($user));
     $token = $user->createToken('main')->plainTextToken;
     return response(compact('user', 'token'));
   }

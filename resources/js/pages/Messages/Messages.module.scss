@@ -168,9 +168,66 @@
     width: 100%;
     overflow-y: scroll;
     -ms-overflow-style: none;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
+.aiSenderMessage_container {
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+}
 
+.userSenderMessage_container {
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.aiSenderMessage {
+    max-width: 70%;
+    background-color: var(--additional_color);
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 100%;
+
+    p {
+        margin: 0;
+        color: var(--font_color);
+    }
+}
+
+.userSenderMessage {
+    max-width: 70%;
+    background-color: var(--additional_color);
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 100%;
+    display: flex;
+    justify-content: end;
+
+    p {
+        margin: 0;
+        color: var(--font_color);
+    }
+}
+
+.typingContainer {
+    position: relative;
+   
+    p {
+        position: absolute;
+        bottom: 5px;
+        left: 10px;
+        color:var(--font_color)
+    }
+}
+.aiChatMessages{
+  padding-bottom: 20px;  
+}
 @media screen and (max-width: 1130px) {
     .message {
         width: 96%;

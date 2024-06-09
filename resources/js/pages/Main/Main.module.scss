@@ -1,7 +1,7 @@
 .mainContent{
   width: 100%;
   padding: 0 30px;
-  height: 100%;
+  height: calc(100% - 5vh);
   box-sizing: border-box;
 }
 @media (max-width: 600px) {

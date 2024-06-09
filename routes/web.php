@@ -30,3 +30,5 @@ Route::get('/{any}', function () {
   return view('index');
 })->where('any', '.*');
 
+Route::get('email/verify/{id}/{hash}', fn () => 'verify')->middleware(['auth', 'signed'])->name('verification.verify'); 
+
