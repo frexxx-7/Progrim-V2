@@ -17,7 +17,7 @@ const ChatsImage = () => {
     }
   ])
 
-  const API_KEY = "6ee0753c4c7e45059480750e469f852e"
+  const API_KEY = "sk-m67QDxdWSTfDcAOnAb680c1944Ac4688B6Ed6bAdB26e2bE1"
 
   const handleSend = async () => {
     const newMessage = {
@@ -54,13 +54,13 @@ const ChatsImage = () => {
     });
 
     const apiRequestBody = {
-      "model": "gpt-3.5-turbo",
+      "model": "01-ai/Yi-1.5-34B-Chat",
       "messages": [ 
         ...apiMessages 
       ]
     }
 
-    await fetch("https://api.aimlapi.com/chat/completions", 
+    await fetch("https://api.openai.com/v1/chat/completions", 
       {
         method: "POST",
         headers: {
@@ -69,6 +69,7 @@ const ChatsImage = () => {
         },
         body: JSON.stringify(apiRequestBody)
       }).then((data) => {
+        console.log(data)
         return data.json();
       }).then((data) => {
         console.log(data);

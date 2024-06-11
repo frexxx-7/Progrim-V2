@@ -2,8 +2,8 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\FriendController;
 use App\Http\Controllers\Api\FriendRequestController;
-use App\Http\Controllers\Api\LanguageController;
 use App\Http\Controllers\Api\MessagesController;
+use App\Http\Controllers\Api\OrganizationsController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -51,3 +51,7 @@ Route::post('/messages', [MessagesController::class, 'getAllChats']);
 Route::post('/getAllMessagesInChat', [MessagesController::class, 'getAllMessagesInChat']);
 Route::post('/addMessages', [MessagesController::class, 'addMessages']);
 
+Route::get('/organizations', [OrganizationsController::class, 'getAll']);
+Route::post('/addOrganization', [OrganizationsController::class, 'addOrganization']);
+Route::post('/editOrganization', [OrganizationsController::class, 'editOrganization']);
+Route::get('/loadInfoOrganization', [OrganizationsController::class, 'loadInfoOrganization']);
