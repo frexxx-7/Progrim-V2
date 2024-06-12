@@ -1,10 +1,12 @@
 import React from 'react'
 import classes from './OrganizationItem.module.scss'
+import { useNavigate } from 'react-router-dom'
 
 const OrganizationItem = ({ org }) => {
-  console.log(org);
+  const navigate = useNavigate()
+  
   return (
-    <div className={classes.OrganizationItem}>
+    <div className={classes.OrganizationItem} onClick={() => navigate("/organization/"+org.id)}>
       <div className={classes.organizationPhoto}>
         {org.icon ? <img src={org.icon} alt="" /> : ""}
       </div>

@@ -1,0 +1,152 @@
+@import '../../assets/scss/mixins.scss';
+
+.mainContent {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 40px;
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+
+    & {
+        -ms-overflow-style: none;
+    }
+}
+
+.inputs {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 50vw;
+    min-height: 200px;
+}
+
+.profile_image {
+    width: 200px;
+    height: 200px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-position: 50% 50%;
+        object-fit: cover;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.inputContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputContainer>label {
+    padding-bottom: 8px;
+    color: var(--font_color);
+}
+
+.titile>h1 {
+    margin: 0;
+    padding: 0 0 25px 0;
+    color: var(--font_color);
+}
+
+.star {
+    color: red;
+}
+
+.contactsInput {
+    height: 40px;
+    @include input;
+}
+
+.contactsInput:focus {
+    outline: none;
+    border: #808080 3px solid;
+}
+
+.resetPasswordContainer {
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.checkBoxContainer {
+    display: flex;
+    width: 160px;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+        color: var(--font_color);
+    }
+}
+
+input[type=checkbox] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    outline: none;
+    content: none;
+}
+
+input[type=checkbox]:before {
+    font-family: "FontAwesome";
+    content: "\f00c";
+    font-size: 15px;
+    color: transparent !important;
+    display: block;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    margin-right: 7px;
+}
+
+input[type=checkbox]:checked:before {
+    color: #fff !important;
+}
+
+.contactsCheckBox:hover {
+    cursor: pointer;
+}
+
+.saveButtonContainer {
+    display: flex;
+    align-items: center;
+    width: 170px;
+    margin-top: 15px;
+}
+
+.saveButton {
+    @include button;
+}
+
+.editButton {
+    @include button;
+    position: absolute;
+    bottom: 50px;
+    right: 40px;
+}
+.saveAdditionalContainer{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.saveAdditionalButton{
+  @include button;
+  margin-top: 20px;
+}
+.pageTitle{
+  h1{
+    color:var(--font_color)
+  }
+}

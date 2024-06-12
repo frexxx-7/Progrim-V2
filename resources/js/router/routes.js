@@ -10,6 +10,8 @@ import Messages from "../pages/Messages/Messages";
 import Organizations from "../pages/Organizations/Organizations";
 import Settings from "../pages/Settings/Settings";
 import CreateOrganizations from "../pages/CreateOrganizations/CreateOrganizations";
+import ShowOrganization from "../pages/ShowOrganization/ShowOrganization";
+import EditOrganization from "../pages/EditOrganization/EditOrganization";
 
 export const publicRoutes = [
   { path: "/signin", Component: Autorization },
@@ -27,4 +29,7 @@ export const privateRoutes = [
   { path: "/organizations", Component: Main, childComponent: Organizations },
   { path: "/settings", Component: Main, childComponent: Settings },
   { path: "/createOrganization", Component: Main, childComponent: CreateOrganizations },
+  { path: "/organization/:id", Component: Main, childComponent: ShowOrganization },
+  { path: "/editOrganization/:id", Component: Main, childComponent: EditOrganization },
+
 ];

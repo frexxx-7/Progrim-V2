@@ -1,0 +1,21 @@
+@import '../../assets/scss/mixins.scss';
+
+.showOrganization{
+  width: 100%;
+  height: 100%;
+}
+.editButton{
+  button{
+    @include button;
+  }
+}
+.organizationName{
+  h1{
+    color:var(--font_color)
+  }
+}
+.organizationContact{
+  p{
+    color:var(--font_color)
+  }
+}

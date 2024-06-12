@@ -53,5 +53,5 @@ Route::post('/addMessages', [MessagesController::class, 'addMessages']);
 
 Route::get('/organizations', [OrganizationsController::class, 'getAll']);
 Route::post('/addOrganization', [OrganizationsController::class, 'addOrganization']);
-Route::post('/editOrganization', [OrganizationsController::class, 'editOrganization']);
-Route::get('/loadInfoOrganization', [OrganizationsController::class, 'loadInfoOrganization']);
+Route::post('/editOrganization/{id}', [OrganizationsController::class, 'editOrganization']);
+Route::get('/loadInfoOrganization/{id}', [OrganizationsController::class, 'loadInfoOrganization']);
