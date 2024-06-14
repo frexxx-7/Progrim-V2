@@ -5,6 +5,7 @@
   height: 100%;
 }
 .editButton{
+  margin-top: 15px;
   button{
     @include button;
   }
@@ -17,5 +18,25 @@
 .organizationContact{
   p{
     color:var(--font_color)
+  }
+}
+.isApplyText{
+  color:green;
+  font-weight: 500;
+  font-size: 20px;
+}
+.organizationAdmin{
+  width: 100%;
+  border-bottom: 1px solid var(--font_color);
+  height: 50px;
+}
+.organizationAdminButtons{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  height: 100%;
+
+  button{
+    @include button;
   }
 }

@@ -3,6 +3,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\FriendController;
 use App\Http\Controllers\Api\FriendRequestController;
 use App\Http\Controllers\Api\MessagesController;
+use App\Http\Controllers\Api\OrganizationRequestController;
 use App\Http\Controllers\Api\OrganizationsController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -55,3 +56,8 @@ Route::get('/organizations', [OrganizationsController::class, 'getAll']);
 Route::post('/addOrganization', [OrganizationsController::class, 'addOrganization']);
 Route::post('/editOrganization/{id}', [OrganizationsController::class, 'editOrganization']);
 Route::get('/loadInfoOrganization/{id}', [OrganizationsController::class, 'loadInfoOrganization']);
+
+Route::post('/addOrganizationRequest', [OrganizationRequestController::class, 'addOrganizationRequest']);
+Route::post('/checkOrganizationRequest', [OrganizationRequestController::class, 'checkOrganizationRequest']);
+Route::post('/loadInfoRequests', [OrganizationRequestController::class, 'getAllInpox']);
+Route::post('/applyRequestOrganization', [OrganizationRequestController::class, 'applyRequestOrganization']);

@@ -66,8 +66,8 @@ body {
 .app_background::after {
     content: "";
     background-color: var(--main_color);
-    -webkit-mask-image: url("./Vector.svg");
-    mask-image: url("./Vector.svg");
+    -webkit-mask-image: url("/Vector.svg");
+    mask-image: url("/Vector.svg");
     mask-size: cover;
     background-size: 100% 100%;
     background-repeat: no-repeat;

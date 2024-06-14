@@ -12,7 +12,7 @@ const Header = () => {
     <div className={classes.header}>
       <div className={classes.header_icon} style={{color:fontcolor_}}>
         <p>PR</p>
-        <img src="./icon.png" alt="icon" />
+        <img src="/icon.png" alt="icon" />
         <p>GRIM</p>
       </div>
       {
