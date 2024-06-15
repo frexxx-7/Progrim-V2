@@ -3,8 +3,10 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\FriendController;
 use App\Http\Controllers\Api\FriendRequestController;
 use App\Http\Controllers\Api\MessagesController;
+use App\Http\Controllers\Api\OrganizationNewsController;
 use App\Http\Controllers\Api\OrganizationRequestController;
 use App\Http\Controllers\Api\OrganizationsController;
+use App\Http\Controllers\Api\ParticipantController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -61,3 +63,13 @@ Route::post('/addOrganizationRequest', [OrganizationRequestController::class, 'a
 Route::post('/checkOrganizationRequest', [OrganizationRequestController::class, 'checkOrganizationRequest']);
 Route::post('/loadInfoRequests', [OrganizationRequestController::class, 'getAllInpox']);
 Route::post('/applyRequestOrganization', [OrganizationRequestController::class, 'applyRequestOrganization']);
+
+Route::post('/loadInfoParticipant', [ParticipantController::class, 'getAllParticipant']);
+Route::post('/deleteParticipant', [ParticipantController::class, 'deleteParticipant']);
+
+Route::get('/organization/{id}/news', [OrganizationNewsController::class, 'readAll']);
+Route::post('/organization/addNews', [OrganizationNewsController::class, 'addNews']);
+Route::get('/organization/news/{id}', [OrganizationNewsController::class, 'oneNews']);
+Route::post('/organization/editNews/{id}', [OrganizationNewsController::class, 'updateNews']);
+Route::get('/organization/deleteNews/{id}', [OrganizationNewsController::class, 'deleteNews']);
+Route::post('/organization/searchAllNews', [OrganizationNewsController::class, 'searchAllNews']);

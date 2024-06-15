@@ -13,7 +13,7 @@ const ParticipantsOrganization = ({ organizationId }) => {
     }
     axiosCLient.post('/loadInfoParticipant', payload)
       .then(({ data }) => {
-        setParticipantOrganization(data.requests)
+        setParticipantOrganization(data.participant)
       })
   }
 

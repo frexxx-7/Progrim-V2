@@ -17,12 +17,12 @@ const ShowOrganization = () => {
   const navigator = useNavigate()
   const [visibleParticipant, setVisibleParticipant] = useState(false)
   const [visibleRequests, setVisibleRequests] = useState(false)
+  const [rerender, setRerender] = useState(Date.now)
 
   const loadInfoOrganization = () => {
     axiosCLient.get('/loadInfoOrganization/' + organizationId)
       .then(({ data }) => {
         setOrganizationInfo(data.organization);
-        setLoadingInfo(false)
       })
   }
 
@@ -33,8 +33,9 @@ const ShowOrganization = () => {
     }
     axiosCLient.post('/checkOrganizationRequest/', payload)
       .then(({ data }) => {
+        setLoadingInfo(false)
         if (data.organizationRequest)
-          setIsApply(true)
+          setIsApply(data.organizationRequest.state)
       })
   }
 
@@ -67,10 +68,10 @@ const ShowOrganization = () => {
           <Loader />
           :
           <div className={classes.showOrganization}>
-            <Modal children={<ParticipantsOrganization organizationId={organizationId} />} visible={visibleParticipant} setVisible={setVisibleParticipant} />
-            <Modal children={<RequestsOrganizations organizationId={organizationId} />} visible={visibleRequests} setVisible={setVisibleRequests} />
+            <Modal children={<ParticipantsOrganization organizationId={organizationId} key={rerender} />} visible={visibleParticipant} setVisible={setVisibleParticipant} />
+            <Modal children={<RequestsOrganizations organizationId={organizationId} setRerendersss={setRerender} />} visible={visibleRequests} setVisible={setVisibleRequests} />
             {
-              organizationInfo.idUser == user.id &&
+              organizationInfo && organizationInfo.idUser == user.id &&
               <div className={classes.organizationAdmin}>
                 <div className={classes.organizationAdminButtons}>
                   <button onClick={() => navigator("/editOrganization/" + organizationId)}>Редактировать</button>
@@ -81,24 +82,53 @@ const ShowOrganization = () => {
             }
 
             {
-              organizationInfo.idUser != user.id && !isApply &&
+              organizationInfo && organizationInfo.idUser != user.id && !isApply &&
               <div className={classes.editButton}>
                 <button onClick={() => applyRequest()}>Подать заявку</button>
               </div>
             }
 
             {
-              isApply &&
+              isApply == "sent" &&
               <p className={classes.isApplyText}>Вы отправили заявку</p>
+            }
+            {
+              isApply == "confirmed" &&
+              <p className={classes.isApplyText}>Вы участник организации</p>
             }
 
             <div className={classes.showOrganizationContainer}>
-              <div className={classes.organizationName}>
-                <h1>{organizationInfo && organizationInfo.name}</h1>
+              <div className={classes.organizationInfo}>
+                <div className={classes.organizationName}>
+                  <h1>{organizationInfo && organizationInfo.name}</h1>
+                </div>
+                <div className={classes.organizationContact}>
+                  <p>Адрес: {organizationInfo && organizationInfo.address}</p>
+                  <p>Номер телефона :{organizationInfo && organizationInfo.numberPhone}</p>
+                </div>
               </div>
-              <div className={classes.organizationContact}>
-                <p>Адрес: {organizationInfo && organizationInfo.address}</p>
-                <p>Номер телефона :{organizationInfo && organizationInfo.numberPhone}</p>
+
+              <div className={classes.organizationLinks}>
+                <div className={classes.organizationLinkItem} onClick={()=>navigator("/news/organization/"+organizationId)}>
+                  <div className={classes.organizationLinkItemBackground}>
+                    <img src="/newsIcon.png" alt="" />
+                  </div>
+                  <p>Новости</p>
+                </div>
+
+                <div className={classes.organizationLinkItem}>
+                  <div className={classes.organizationLinkItemBackground}>
+                    <img src="/mapIcon.png" alt="" />
+                  </div>
+                  <p>Интерактивная <br /> карта</p>
+                </div>
+
+                <div className={classes.organizationLinkItem}>
+                  <div className={classes.organizationLinkItemBackground}>
+                    <img src="/planingIcon.png" alt="" />
+                  </div>
+                  <p>Планинг <br /> трекер</p>
+                </div>
               </div>
             </div>
           </div>

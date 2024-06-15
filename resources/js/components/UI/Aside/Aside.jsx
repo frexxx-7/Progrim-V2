@@ -74,7 +74,7 @@ const Aside = () => {
             <Link to={"/main"}>{t("aside.main")}</Link>
           </li>
           <li>
-            <Link to={"/news"}>{t("aside.news")}</Link>
+            <Link to={"/news/global"}>{t("aside.news")}</Link>
           </li>
           <li>
             <Link to={"/organizations"}>{t("aside.organizations")}</Link>

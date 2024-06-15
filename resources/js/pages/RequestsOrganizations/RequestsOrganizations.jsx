@@ -3,7 +3,7 @@ import classes from './RequestsOrganizations.module.scss'
 import axiosCLient from '../../axios.client'
 import RequestsOrganizationsItem from './RequestsOrganizationsItem/RequestsOrganizationsItem'
 
-const RequestsOrganizations = ({ organizationId }) => {
+const RequestsOrganizations = ({ organizationId, setRerendersss }) => {
   const [organizationRequest, setOrganizationRequests] = useState([])
   const [rerender, setRerender] = useState(Date.now)
 
@@ -35,7 +35,7 @@ const RequestsOrganizations = ({ organizationId }) => {
           <div className={classes.noRequests}>Нет входящих заявок</div>
           :
           organizationRequest.map((item, key) => {
-            return <RequestsOrganizationsItem key={key} userInfo={item.user} idOrganization={organizationId} setRerender={setRerender}/>
+            return <RequestsOrganizationsItem key={key} userInfo={item.user} idOrganization={organizationId} setRerender={setRerender} setRerendersss={setRerendersss}/>
           })
       }
     </div>

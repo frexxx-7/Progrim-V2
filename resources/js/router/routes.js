@@ -12,6 +12,10 @@ import Settings from "../pages/Settings/Settings";
 import CreateOrganizations from "../pages/CreateOrganizations/CreateOrganizations";
 import ShowOrganization from "../pages/ShowOrganization/ShowOrganization";
 import EditOrganization from "../pages/EditOrganization/EditOrganization";
+import GlobalNews from "../pages/News/GlobalNews/GlobalNews";
+import OrganizationNews from "../pages/News/OrganizationNews/OrganizationNews";
+import AddOrganizationNews from "../pages/News/OrganizationNews/AddOrganizationNews/AddOrganizationNews";
+import LoadNews from "../pages/News/OrganizationNews/LoadNews";
 
 export const publicRoutes = [
   { path: "/signin", Component: Autorization },
@@ -20,7 +24,7 @@ export const publicRoutes = [
 
 export const privateRoutes = [
   { path: "/main", Component: Main, childComponent: MainPage },
-  { path: "/news", Component: Main, childComponent: News },
+  //{ path: "/news", Component: Main, childComponent: News },
   { path: "/profile", Component: Main, childComponent: Profile },
   { path: "/friends", Component: Main, childComponent: Friends },
   { path: "/editProfile", Component: Main, childComponent: EditProfile },
@@ -30,6 +34,9 @@ export const privateRoutes = [
   { path: "/settings", Component: Main, childComponent: Settings },
   { path: "/createOrganization", Component: Main, childComponent: CreateOrganizations },
   { path: "/organization/:id", Component: Main, childComponent: ShowOrganization },
-  { path: "/editOrganization/:id", Component: Main, childComponent: EditOrganization },
-
+  { path: "/news/global", Component: Main, childComponent: News },
+  { path: "/news/organization/:id", Component: Main, childComponent: News },
+  { path: "/news/organization/:id/:id", Component: Main, childComponent: LoadNews },
+  { path: "/organization/addNews/:id", Component: Main, childComponent: AddOrganizationNews },
+  { path: "/organization/editNews/:id", Component: Main, childComponent: AddOrganizationNews },
 ];

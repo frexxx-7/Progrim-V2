@@ -4,7 +4,7 @@ import { useStateContext } from '../../../context/ContextProvider'
 import { NavLink } from 'react-router-dom'
 import axiosCLient from '../../../axios.client'
 
-const RequestsOrganizationsItem = ({ userInfo, idOrganization, setRerender }) => {
+const RequestsOrganizationsItem = ({ userInfo, idOrganization, setRerender, setRerendersss }) => {
   const { user } = useStateContext()
 
   const applyRequest = () => {
@@ -16,6 +16,7 @@ const RequestsOrganizationsItem = ({ userInfo, idOrganization, setRerender }) =>
       axiosCLient.post(`/applyRequestOrganization`, payload)
         .then(({ data }) => {
           setRerender(Date.now())
+          setRerendersss(Date.now())
         })
     }
     catch (error) {

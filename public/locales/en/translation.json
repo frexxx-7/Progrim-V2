@@ -35,6 +35,7 @@
 
   "news":{
     "titleGl":"Global News",
+    "titleOrg":"Organization news",
     "keyword":"Keyword",
     "sortby": "Sort by",
     "selectLang": "Select language"
