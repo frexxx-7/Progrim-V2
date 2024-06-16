@@ -3,6 +3,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\FriendController;
 use App\Http\Controllers\Api\FriendRequestController;
 use App\Http\Controllers\Api\MessagesController;
+use App\Http\Controllers\Api\OrganizationMarkerController;
 use App\Http\Controllers\Api\OrganizationNewsController;
 use App\Http\Controllers\Api\OrganizationRequestController;
 use App\Http\Controllers\Api\OrganizationsController;
@@ -66,6 +67,7 @@ Route::post('/applyRequestOrganization', [OrganizationRequestController::class, 
 
 Route::post('/loadInfoParticipant', [ParticipantController::class, 'getAllParticipant']);
 Route::post('/deleteParticipant', [ParticipantController::class, 'deleteParticipant']);
+Route::post('/checkUserInOrg', [ParticipantController::class, 'checkUserInOrg']);
 
 Route::get('/organization/{id}/news', [OrganizationNewsController::class, 'readAll']);
 Route::post('/organization/addNews', [OrganizationNewsController::class, 'addNews']);
@@ -73,3 +75,10 @@ Route::get('/organization/news/{id}', [OrganizationNewsController::class, 'oneNe
 Route::post('/organization/editNews/{id}', [OrganizationNewsController::class, 'updateNews']);
 Route::get('/organization/deleteNews/{id}', [OrganizationNewsController::class, 'deleteNews']);
 Route::post('/organization/searchAllNews', [OrganizationNewsController::class, 'searchAllNews']);
+
+Route::get('/organization/{id}/markers', [OrganizationMarkerController::class, 'readAll']);
+Route::post('/organization/addMarker', [OrganizationMarkerController::class, 'addMarker']);
+Route::get('/organization/marker/{id}', [OrganizationMarkerController::class, 'oneMarker']);
+Route::post('/organization/editMarker/{id}', [OrganizationMarkerController::class, 'updateMarker']);
+Route::get('/organization/deleteMarker/{id}', [OrganizationMarkerController::class, 'deleteMarker']);
+Route::post('/organization/searchAllMarkers', [OrganizationMarkerController::class, 'searchAllMarkers']);

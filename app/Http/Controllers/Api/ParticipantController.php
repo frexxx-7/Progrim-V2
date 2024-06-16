@@ -32,10 +32,11 @@ class ParticipantController extends Controller
     return response(compact("participant"));
   }
 
-  public function getAllParticipant(Request $request){
+  public function getAllParticipant(Request $request)
+  {
     try {
       $data = $request->all();
-      
+
       $participant = ParticipantOrganization::where("idOrganization", $data["idOrganization"])->with('user')->get();
     } catch (\Throwable $th) {
       return response($th->getMessage());
@@ -49,6 +50,17 @@ class ParticipantController extends Controller
 
     try {
       $participant = ParticipantOrganization::where("idOrganization", $data["idOrganization"])->where("idUser", $data["idUser"])->delete();
+    } catch (\Throwable $th) {
+      return response($th->getMessage());
+    }
+    return response(compact("participant"));
+  }
+  public function checkUserInOrg(Request $request)
+  {
+    try {
+      $data = $request->all();
+
+      $participant = ParticipantOrganization::where("idUser", $data["idUser"])->whereNot('role', 'kicked')->get();
     } catch (\Throwable $th) {
       return response($th->getMessage());
     }

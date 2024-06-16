@@ -1,0 +1,66 @@
+.markerItemContainer {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    border: 1px solid var(--font_color);
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.markerItemForAdmin {
+    display: flex;
+    gap: 10px;
+}
+
+.markerButton {
+    width: 20px;
+    height: 20px;
+
+    .pen {
+        fill: var(--font_color);
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+
+        path {
+            stroke: var(--font_color)
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.markerItem {
+    width: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.markerTitle {
+    color: var(--font_color);
+    margin: 0px;
+    font-size: 20px;
+
+
+}
+
+.markerText {
+    color: var(--font_color);
+    margin: 0;
+    margin-left: 20px;
+}
+
+.markerCoordinates {
+    color: var(--font_color);
+    margin: 0;
+    display: flex;
+    justify-content: end;
+    font-size: 10px;
+}

@@ -13,7 +13,9 @@ const Aside = () => {
   const location = useLocation()
   const mainColor_ = useSelector(state => state.changeColors.mainColor)
   const fontcolor_ = useSelector(state => state.changeColors.fontColor)
-  
+
+  const [paticipantInfo, setParticipantInfo] = useState()
+
   const { t } = useTranslation()
 
   const onLogout = (ev) => {
@@ -42,11 +44,25 @@ const Aside = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [showAside]);
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     setShowAside(false)
   }, [location])
 
+  useEffect(() => {
+    user.id &&
+      checkUserInOrganization()
+  }, [user])
+
+  const checkUserInOrganization = () => {
+    const payload = {
+      idUser: user.id
+    }
+    axiosCLient.post('/checkUserInOrg', payload)
+      .then((response) => {
+        setParticipantInfo(response.data.participant[0])
+      });
+  }
   return (
     <aside ref={asideRef} className={classes.aside}>
       <div className={classes.aside_button} onClick={() => setShowAside(!showAside)}>
@@ -76,9 +92,26 @@ const Aside = () => {
           <li>
             <Link to={"/news/global"}>{t("aside.news")}</Link>
           </li>
+          {paticipantInfo &&
+            <li>
+              <Link to={"/news/organization/" + paticipantInfo.idOrganization}>Новости организации</Link>
+            </li>
+          }
           <li>
             <Link to={"/organizations"}>{t("aside.organizations")}</Link>
           </li>
+          {paticipantInfo &&
+
+            <li>
+              <Link to={"/organization/" + paticipantInfo.idOrganization}>Моя организация</Link>
+            </li>
+          }
+          {paticipantInfo &&
+
+            <li>
+              <Link to={"/organization/interactiveMap/" + paticipantInfo.idOrganization}>Интерактивная карта</Link>
+            </li>
+          }
           <li>
             <Link to={"/messages"}>{t("aside.messages")}</Link>
           </li>

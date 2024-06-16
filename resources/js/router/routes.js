@@ -16,6 +16,7 @@ import GlobalNews from "../pages/News/GlobalNews/GlobalNews";
 import OrganizationNews from "../pages/News/OrganizationNews/OrganizationNews";
 import AddOrganizationNews from "../pages/News/OrganizationNews/AddOrganizationNews/AddOrganizationNews";
 import LoadNews from "../pages/News/OrganizationNews/LoadNews";
+import InteractiveMap from "../pages/InteractiveMap/InteractiveMap";
 
 export const publicRoutes = [
   { path: "/signin", Component: Autorization },
@@ -24,8 +25,8 @@ export const publicRoutes = [
 
 export const privateRoutes = [
   { path: "/main", Component: Main, childComponent: MainPage },
-  //{ path: "/news", Component: Main, childComponent: News },
   { path: "/profile", Component: Main, childComponent: Profile },
+  { path: "/profile/:id", Component: Main, childComponent: Profile },
   { path: "/friends", Component: Main, childComponent: Friends },
   { path: "/editProfile", Component: Main, childComponent: EditProfile },
   { path: "/messages", Component: Main, childComponent: Messages },
@@ -39,4 +40,5 @@ export const privateRoutes = [
   { path: "/news/organization/:id/:id", Component: Main, childComponent: LoadNews },
   { path: "/organization/addNews/:id", Component: Main, childComponent: AddOrganizationNews },
   { path: "/organization/editNews/:id", Component: Main, childComponent: AddOrganizationNews },
+  { path: "/organization/interactiveMap/:id", Component: Main, childComponent: InteractiveMap },
 ];

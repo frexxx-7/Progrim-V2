@@ -32,7 +32,7 @@ const AddOrganizationNews = () => {
             titleRef.current.value = data.news.title
             contentRef.current.value = data.news.content
             isPublishedRef.current.checked = data.news.is_published
-            setSelectedImage(data.news.image != null ? "/storage/"+data.news.image : null)
+            setSelectedImage(data.news.image != null ? data.news.image : null)
           }
         })
         .catch(({ response }) => {
@@ -146,7 +146,7 @@ const AddOrganizationNews = () => {
               style={{ display: "none" }}
               onChange={(e) => chooseImage(e.target.files)}
             />
-            <img src={selectedImage}
+            <img src={"/storage/"+selectedImage}
               alt="Selected image"
               style={{ display: selectedImage ? "block" : "none" }}
               id="selectImg"

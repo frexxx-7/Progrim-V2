@@ -63,20 +63,25 @@ class OrganizationNewsController extends Controller
   public function updateNews(CreateNewsRequest $request, string $id)
   {
     $data = $request->all();
-    if (!empty($data['image'])) {
-      list($meta, $avatarContent) = explode(',', $data['image']);
-      $avatarContent = base64_decode($avatarContent);
-      $extension = '';
-      if (preg_match('/^data:image\/(\w+);base64,/', $data['image'], $type)) {
-        $extension = strtolower($type[1]); // jpg, png, gif, etc.
+    $news = OrganizationNews::find($id);
+
+    if ($news->image == $data["image"]) {
+      $avatarPath = $news->image;
+    } else
+      if (!empty($data['image'])) {
+        list($meta, $avatarContent) = explode(',', $data['image']);
+        $avatarContent = base64_decode($avatarContent);
+        $extension = '';
+        if (preg_match('/^data:image\/(\w+);base64,/', $data['image'], $type)) {
+          $extension = strtolower($type[1]); // jpg, png, gif, etc.
+        }
+        $fileName = Str::random(10) . '.' . $extension;
+        $directory = 'organization-news/' . now()->format('FY');
+        Storage::disk('public')->put("$directory/$fileName", $avatarContent);
+        $avatarPath = "/$directory/$fileName";
+      } else {
+        $avatarPath = null;
       }
-      $fileName = Str::random(10) . '.' . $extension;
-      $directory = 'organization-news/' . now()->format('FY');
-      Storage::disk('public')->put("$directory/$fileName", $avatarContent);
-      $avatarPath = "/$directory/$fileName";
-    } else {
-      $avatarPath = null;
-    }
     try {
       OrganizationNews::where('id', $id)->update([
         'title' => $data['title'],

@@ -23,7 +23,7 @@ const OrganizationNews = () => {
   }
 
   const loadOrganizationNews = () => {
-    axiosCLient.get('/organization/' + organizationId+'/news')
+    axiosCLient.get('/organization/' + organizationId + '/news')
       .then(({ data }) => {
         console.log(data);
         setNews(data.news);
@@ -44,7 +44,7 @@ const OrganizationNews = () => {
         organizationInfo && organizationInfo.idUser == user.id &&
         <div className={classes.adminPanel}>
           <div className={classes.filterPanelButton}>
-            <button onClick={()=>navigator("/organization/addNews/"+organizationId)}>Добавить</button>
+            <button onClick={() => navigator("/organization/addNews/" + organizationId)}>Добавить</button>
           </div>
 
         </div>
@@ -55,7 +55,12 @@ const OrganizationNews = () => {
           <div className={classes.noNews}>Нет новостей</div>
         }
         {news && news.map((item, key) =>
-          <OrganizationNewsItem data={item} key={key} />
+          user.id == organizationInfo.idUser ?
+            <OrganizationNewsItem data={item} key={key} />
+            :
+            item.is_published == 1 &&
+            <OrganizationNewsItem data={item} key={key} />
+
         )}
       </div>
     </div>

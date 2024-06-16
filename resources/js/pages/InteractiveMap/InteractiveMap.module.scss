@@ -1,0 +1,95 @@
+@import "../../assets/scss/mixins.scss";
+
+.InteractiveMap {
+    width: 100%;
+    height: 75%;
+}
+
+.interactiveMap_addedMarkers_container {
+    width: 400px;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.interactiveMap_addedMarkers_container::-webkit-scrollbar {
+    display: none;
+}
+
+.interactiveMap_container {
+    height: 100%;
+    width: 100%;
+}
+
+.pageTitle {
+    color: var(--font_color);
+    font-size: 15px;
+}
+
+.InteractiveMapContainer {
+    display: flex;
+    gap: 15px;
+    height: 100%;
+}
+
+.leaflet_container {
+    height: calc(100% - 60px);
+    border-radius: 10px;
+}
+
+.interactiveMap_buttons {
+    height: 40px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    button {
+        @include button;
+        padding: 0 10px;
+    }
+}
+
+.iteractiveMap_addMarkers {
+    width: 100%;
+    button {
+        @include button;
+        width: 100%;
+    }
+}
+
+.addedMarkers_container {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.addedMarkers_item {
+    display: flex;
+    flex-direction: column;
+
+    p {
+        margin: 0;
+        color: var(--font_color);
+        font-size: 12px;
+    }
+
+    input {
+        @include input;
+    }
+}
+
+.saveAddedMarkers {
+    button {
+        @include button;
+    }
+}
+
+.markersContainer {
+    margin-top: 10px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

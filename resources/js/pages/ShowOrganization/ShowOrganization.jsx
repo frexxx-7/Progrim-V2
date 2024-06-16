@@ -116,7 +116,7 @@ const ShowOrganization = () => {
                   <p>Новости</p>
                 </div>
 
-                <div className={classes.organizationLinkItem}>
+                <div className={classes.organizationLinkItem} onClick={()=>navigator("/organization/interactiveMap/"+organizationId)}>
                   <div className={classes.organizationLinkItemBackground}>
                     <img src="/mapIcon.png" alt="" />
                   </div>
