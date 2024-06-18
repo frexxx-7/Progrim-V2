@@ -58,7 +58,7 @@ class MessagesController extends Controller
         $query->where('idUserRecipient', $userId)
           ->where('idUserSender', $userTwoId);
       })
-      ->with(['sender', 'recipient'])
+      ->with(['sender', 'recipient', 'files'])  // Include files relationship
       ->orderBy('created_at', 'asc')
       ->get();
 

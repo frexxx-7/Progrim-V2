@@ -17,7 +17,7 @@ const ChatsImage = () => {
     }
   ])
 
-  const API_KEY = "sk-m67QDxdWSTfDcAOnAb680c1944Ac4688B6Ed6bAdB26e2bE1"
+  const API_KEY = "b5a74ac8beb947a19aa57062906ce6b0"
 
   const handleSend = async () => {
     const newMessage = {
@@ -54,13 +54,13 @@ const ChatsImage = () => {
     });
 
     const apiRequestBody = {
-      "model": "01-ai/Yi-1.5-34B-Chat",
+      "model": "gpt-3.5-turbo",
       "messages": [ 
         ...apiMessages 
       ]
     }
 
-    await fetch("https://api.openai.com/v1/chat/completions", 
+    await fetch("https://api.aimlapi.com/chat/completions", 
       {
         method: "POST",
         headers: {
@@ -116,7 +116,7 @@ const ChatsImage = () => {
                 }
                 <div className={classes.aiChatMessageInputContainer}>
                   <input onKeyPress={handleKeyPress} ref={inputRef} type="text" placeholder={t("messages.sendMessage")} />
-                  <button onClick={handleSend}> > </button>
+                  <button onClick={handleSend}> {">"} </button>
                 </div>
               </div>
             </div>

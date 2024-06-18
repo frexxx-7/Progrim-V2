@@ -2,6 +2,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\FriendController;
 use App\Http\Controllers\Api\FriendRequestController;
+use App\Http\Controllers\Api\MessageFileController;
 use App\Http\Controllers\Api\MessagesController;
 use App\Http\Controllers\Api\OrganizationMarkerController;
 use App\Http\Controllers\Api\OrganizationNewsController;
@@ -82,3 +83,6 @@ Route::get('/organization/marker/{id}', [OrganizationMarkerController::class, 'o
 Route::post('/organization/editMarker/{id}', [OrganizationMarkerController::class, 'updateMarker']);
 Route::get('/organization/deleteMarker/{id}', [OrganizationMarkerController::class, 'deleteMarker']);
 Route::post('/organization/searchAllMarkers', [OrganizationMarkerController::class, 'searchAllMarkers']);
+
+Route::post('/uploadMessageFile', [MessageFileController::class, 'upload']);
+Route::get('/downloadMessageFile/{id}', [MessageFileController::class, 'download']);

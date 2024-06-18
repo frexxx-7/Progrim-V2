@@ -94,7 +94,7 @@ const Aside = () => {
           </li>
           {paticipantInfo &&
             <li>
-              <Link to={"/news/organization/" + paticipantInfo.idOrganization}>Новости организации</Link>
+              <Link to={"/news/organization/" + paticipantInfo.idOrganization}>{t("aside.newsOrg")}</Link>
             </li>
           }
           <li>
@@ -103,13 +103,13 @@ const Aside = () => {
           {paticipantInfo &&
 
             <li>
-              <Link to={"/organization/" + paticipantInfo.idOrganization}>Моя организация</Link>
+              <Link to={"/organization/" + paticipantInfo.idOrganization}>{t("aside.myOrg")}</Link>
             </li>
           }
           {paticipantInfo &&
 
             <li>
-              <Link to={"/organization/interactiveMap/" + paticipantInfo.idOrganization}>Интерактивная карта</Link>
+              <Link to={"/organization/interactiveMap/" + paticipantInfo.idOrganization}>{t("aside.interactiveMap")}</Link>
             </li>
           }
           <li>

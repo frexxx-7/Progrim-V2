@@ -1,5 +1,5 @@
 {
-  "welcome":"Welcome to Progrim V2",
+  "welcome":"Welcome to in social network Progrim V2",
 
 
   "follow": "Follow news and organizations!",
@@ -26,7 +26,10 @@
   "aside":{
     "main":"Main",
     "news":"News",
+    "newsOrg":"News organization",
     "organizations":"Organizations",
+    "myOrg":"My organization",
+    "interactiveMap":"Interactive map",
     "messages":"Messages",
     "friends":"Friends",
     "settings":"Settings",
@@ -38,7 +41,11 @@
     "titleOrg":"Organization news",
     "keyword":"Keyword",
     "sortby": "Sort by",
-    "selectLang": "Select language"
+    "selectLang": "Select language",
+    "noNews": "No news",
+    "addNews": "Add news",
+    "editNews": "Edit news",
+    "addPhoto": "Add photo"
   },
 
   "messages":{
@@ -76,5 +83,11 @@
     "language":{
       "selectLang": "Select language"
     }
+  },
+  "organizations":{
+    "organizationTitle":"Organizations",
+    "createButton":"Create",
+    "address":"Address",
+    "phone":"Телефон"
   }
 }

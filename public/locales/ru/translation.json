@@ -1,5 +1,5 @@
 {
-  "welcome":"Добро пожаловать в Progrim V2",
+  "welcome":"Добро пожаловать в социальную сеть Progrim V2",
 
   "follow": "Следите за новостями и организанциями!",
 
@@ -25,7 +25,10 @@
   "aside":{
     "main":"Главная",
     "news":"Новости",
+    "newsOrg":"Новости организации",
     "organizations":"Организации",
+    "myOrg":"Моя организация",
+    "interactiveMap":"Интерактивная карта",
     "messages":"Сообщения",
     "friends":"Друзья",
     "settings":"Настройки",
@@ -37,7 +40,11 @@
     "titleOrg":"Новости организации",
     "keyword":"Ключевое слово",
     "sortby": "Сортировать по",
-    "selectLang": "Выберите язык"
+    "selectLang": "Выберите язык",
+    "noNews": "Нет новостей",
+    "addNews": "Добавить новость",
+    "editNews": "Редактировать новость",
+    "addPhoto": "Добавьте фото"
   },
 
   "messages":{
@@ -74,5 +81,11 @@
     "language":{
       "selectLang": "Выберите язык"
     }
+  },
+  "organizations":{
+    "organizationTitle":"Организации",
+    "createButton":"Создать",
+    "address":"Адрес",
+    "phone":"Телефон"
   }
 }

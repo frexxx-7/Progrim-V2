@@ -6,12 +6,14 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import Modal from '../../../../components/UI/Modal/Modal'
 import ViewImage from '../ViewImage/ViewImage'
 import axiosCLient from '../../../../axios.client'
+import { useTranslation } from 'react-i18next'
 
 const AddOrganizationNews = () => {
 
   const [selectedImage, setSelectedImage] = useState()
   const [visibleModal, setVisibleModal] = useState(false)
   const [errors, setErrors] = useState([])
+  const { t } = useTranslation()
   const [infoNews, setInfoNews] = useState()
 
   const titleRef = useRef()
@@ -122,9 +124,9 @@ const AddOrganizationNews = () => {
               {
                 location.pathname.split('/')[location.pathname.split('/').length - 2] == "addNews"
                   ?
-                  "Добавить новость"
+                  t("news.addNews")
                   :
-                  "Редактировать новость"
+                  t("news.editNews")
               }
             </h1>
           </div>
@@ -137,7 +139,7 @@ const AddOrganizationNews = () => {
           <Modal visible={visibleModal} setVisible={setVisibleModal} children={<ViewImage image={selectedImage} />} />
 
           <div className={classes.addPhoto}>
-            <p>Добавьте фото:</p>
+            <p>{t("news.addPhoto")}:</p>
             <div className={classes.icon} onClick={changeImage}><FontAwesomeIcon icon={faPlus} /></div>
             <input
               type="file"
@@ -168,9 +170,9 @@ const AddOrganizationNews = () => {
           {
             location.pathname.split('/')[location.pathname.split('/').length - 2] == "addNews"
               ?
-              <button onClick={addNewsToDatabase}>Добавить</button>
+              <button onClick={addNewsToDatabase}>{t("friends.addButton")}</button>
               :
-              <button onClick={editNewsToDatabase}>Редактировать</button>
+              <button onClick={editNewsToDatabase}>{t("profile.editButton")}</button>
           }
         </div>
       </div>

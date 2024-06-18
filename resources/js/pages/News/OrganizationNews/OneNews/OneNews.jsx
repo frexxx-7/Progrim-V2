@@ -5,9 +5,11 @@ import axiosCLient from '../../../../axios.client'
 import Loader from '../../../../components/UI/Loader/Loader'
 import { useNavigate } from 'react-router-dom'
 import { useStateContext } from '../../../../context/ContextProvider'
+import { useTranslation } from 'react-i18next'
 
 const OneNews = ({ newsInfo }) => {
   const organizationId = location.pathname.split('/')[location.pathname.split('/').length - 2]
+  const { t } = useTranslation()
   const { user } = useStateContext()
   const [organizationInfo, setOrganizationInfo] = useState()
   const navigator = useNavigate()
@@ -29,7 +31,7 @@ const OneNews = ({ newsInfo }) => {
         organizationInfo && organizationInfo.idUser == user.id &&
         <div className={classes2.adminPanel}>
           <div className={classes2.filterPanelButton}>
-            <button onClick={() => navigator("/organization/editNews/" + newsInfo.id)}>Изменить</button>
+            <button onClick={() => navigator("/organization/editNews/" + newsInfo.id)}>{t("profile.editButton")}</button>
           </div>
 
         </div>

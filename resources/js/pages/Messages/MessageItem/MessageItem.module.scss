@@ -32,6 +32,12 @@
   border: 1px solid var(--border-color);
   border-radius: 15px;
   padding: .5rem;
+  display: flex;
+  flex-direction: column;
+
+  a{
+    color:#fff;
+  }
 }
 
 .messageUserContainer {
@@ -64,7 +70,7 @@
 .myImage {
   height: auto;
   order: 2;
-  width: 12%;
+  width: 3em;
 
   img {
     height: 3rem;
@@ -72,12 +78,13 @@
     border-radius: 50%;
     border: 2px solid var(--border-color);
     transition: border 500ms linear;
+    object-fit: cover;
   }
 }
 
 .image {
   height: auto;
-  width: 12%;
+  width: 3em;
 
   img {
     height: 3rem;
@@ -85,6 +92,7 @@
     border-radius: 50%;
     border: 2px solid var(--border-color);
     transition: border 500ms linear;
+    object-fit: cover;
   }
 }
 

@@ -10,7 +10,9 @@ const MessageItem = ({value}) => {
     const datePost = new Date(date).toLocaleDateString()
     return `${datePost} ${timePost}`
   }
-
+  const handleDownload = (fileId) => {
+    window.location.href = `/storage/message_files/${fileId}`;
+  };
   return (
     <div className={value.sender.id === user.id ? classes.messageItemMyMessage : classes.messageUserMessage}>
       <div className={value.sender.id === user.id ? classes.myImage : classes.image}>
@@ -27,7 +29,19 @@ const MessageItem = ({value}) => {
             </p>
           </div>
         </div>
+        {value.files && value.files.length > 0 && (
+        <div className={classes.fileAttachments}>
+          {value.files.map((file) => (
+            <div key={file.id} className={classes.fileAttachment}>
+              <a href={`/storage/${file.pathFile}`} download>
+                Download 
+              </a>
+            </div>
+          ))}
+        </div>
+      )}
       </div>
+      
     </div>
   )
 }

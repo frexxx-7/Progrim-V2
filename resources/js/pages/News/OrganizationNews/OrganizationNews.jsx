@@ -44,7 +44,7 @@ const OrganizationNews = () => {
         organizationInfo && organizationInfo.idUser == user.id &&
         <div className={classes.adminPanel}>
           <div className={classes.filterPanelButton}>
-            <button onClick={() => navigator("/organization/addNews/" + organizationId)}>Добавить</button>
+            <button onClick={() => navigator("/organization/addNews/" + organizationId)}>{t("friends.addButton")}</button>
           </div>
 
         </div>
@@ -52,7 +52,7 @@ const OrganizationNews = () => {
       <div className={classes.newsContent}>
         {
           news.length == 0 &&
-          <div className={classes.noNews}>Нет новостей</div>
+          <div className={classes.noNews}>{t("news.noNews")}</div>
         }
         {news && news.map((item, key) =>
           user.id == organizationInfo.idUser ?
