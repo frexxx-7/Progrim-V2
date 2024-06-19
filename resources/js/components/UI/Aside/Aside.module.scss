@@ -11,6 +11,7 @@
 .aside_content {
     transition: all .3s linear;
     height: 100%;
+    width: 0;
 }
 
 .aside_button {
@@ -64,7 +65,7 @@
     position: relative;
     padding-bottom: 1em;
     box-sizing: border-box;
-  }
+}
 
 .aside_content ul li a {
     color: var(--font_color);
@@ -76,11 +77,28 @@
     cursor: pointer;
     color: var(--additional_color);
 }
-.exitLink{
-  position: absolute;
-  bottom: 0;
+
+.exitLink {
+    position: absolute;
+    bottom: 0;
 }
-.settingLink{
-  position: absolute;
-  bottom: 30px;
+
+.settingLink {
+    position: absolute;
+    bottom: 30px;
+}
+
+.asideW {
+    width: 20vw;
+}
+
+@media (max-width: 1000px) {
+    .asideW {
+        width: 45vw;
+    }
+}
+@media (max-width: 450px) {
+  .asideW {
+    width: 70vw;
+}
 }

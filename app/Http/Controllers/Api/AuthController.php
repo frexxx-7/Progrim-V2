@@ -21,7 +21,6 @@ class AuthController extends Controller
       'email' => $data['email'],
       'password' => bcrypt($data['password']),
     ]);
-    event(new Registered($user));
     $token = $user->createToken('main')->plainTextToken;
     return response(compact('user', 'token'));
   }

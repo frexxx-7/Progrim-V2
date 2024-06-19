@@ -49,9 +49,9 @@ const Registration = () => {
     }
     axiosCLient.post('/signup', payload)
       .then(({ data }) => {
+        navigate('/signin')
         setUser(data.user)
         setToken(data.token)
-        navigate('/sigin')
       })
       .catch(err => {
         const response = err.response

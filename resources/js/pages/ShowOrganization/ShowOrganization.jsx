@@ -123,12 +123,12 @@ const ShowOrganization = () => {
                   <p>Интерактивная <br /> карта</p>
                 </div>
 
-                <div className={classes.organizationLinkItem}>
+                {/*<div className={classes.organizationLinkItem}>
                   <div className={classes.organizationLinkItemBackground}>
                     <img src="/planingIcon.png" alt="" />
                   </div>
                   <p>Планинг <br /> трекер</p>
-                </div>
+                </div>*/}
               </div>
             </div>
           </div>

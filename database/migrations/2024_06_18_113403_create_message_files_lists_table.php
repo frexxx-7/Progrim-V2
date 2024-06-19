@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('translations', function (Blueprint $table) {
+        Schema::create('message_files_lists', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('table_name');
-            $table->string('column_name');
-            $table->unsignedInteger('foreign_key');
-            $table->string('locale');
-            $table->text('value');
+            $table->integer('idMessage')->nullable();
+            $table->integer('idFile')->nullable();
             $table->timestamps();
-
-            $table->unique(['table_name', 'column_name', 'foreign_key', 'locale']);
         });
     }
 
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('translations');
+        Schema::dropIfExists('message_files_lists');
     }
 };

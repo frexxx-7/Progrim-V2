@@ -1,0 +1,93 @@
+{
+  "welcome":"Сардэчна запрашаем у сацыяльную сетку Progrim V2",
+
+  "follow": "Сачыце за навінамі і арганізацыямі!",
+
+  "profile":{
+    "editButton": "Рэдагаваць"
+  },
+
+  "editProfile":{
+    "title":"Рэдагаваць профіль",
+    "login":"Лагін",
+    "email":"Пошта",
+    "quote":"Цытата",
+    "changePassword":"Змяніць пароль",
+    "oldPassword":"Стары пароль",
+    "newPassword":"Новы пароль",
+    "repeatPassword": "Паўтарыце пароль",
+    "saveChanges": "Захаваць змены",
+    "addittionalButton": "Дадаць дадатковую інфармацыю",
+    "addittionalTitle": "Дадатковая інфармацыя",
+    "backButton": "Назад"
+  },
+
+  "aside":{
+    "main":"Галоўная",
+    "news":"Навіны",
+    "newsOrg":"Навіны арганізацыі",
+    "organizations":"Арганізацыі",
+    "myOrg":"Мая арганізацыя",
+    "interactiveMap":"Інтэрактыўная карта",
+    "messages":"Паведамлення",
+    "friends":"Сябры",
+    "settings":"Налады",
+    "exit":"Вынахад"
+  },
+
+  "news":{
+    "titleGl":"Глабальныя навіны",
+    "titleOrg":"Навіны арганізацыі",
+    "keyword":"Ключавое слова",
+    "sortby": "Сартаваць ПО",
+    "selectLang": "Абярыце мову",
+    "noNews": "Няма навін",
+    "addNews": "Дадаць навіну",
+    "editNews": "Рэдагаваць навіна",
+    "addPhoto": "Дадайце фота"
+  },
+
+  "messages":{
+    "title" : "Чаты",
+    "aiMessage" : "Прывітанне, я ChatGPT!",
+    "sendMessage": "Адправіць паведамленне",
+    "typing": "Друкуе..."
+  },
+  "friends":{
+    "myFriendsTitle": "Спіс сяброў",
+    "inboxTitle": "Уваходныя заяўкі",
+    "outboxTitle": "Выходныя заяўкі",
+    "searchFriendsTitle": "Поиск друзей",
+    "addButton": "Дадаць",
+    "messageButton": "Паведамленне",
+    "deleteButton": "Выдаліць",
+    "searchInput": "Пошук",
+    "cancelButton": "Адмена",
+    "noFriends": "Няма сяброў",
+
+    "aside":{
+      "myFriends": "Мае сябры",
+      "inbox": "Уваходныя",
+      "outbox": "Выходныя",
+      "searchFriends": "Пошук сяброў"
+    }
+  },
+
+  "settings":{
+    "aside":{
+      "theme": "Тэма",
+      "language": "Мова"
+    },
+    "language":{
+      "selectLang": "Абярыце мову"
+    }
+  },
+  "organizations":{
+    "organizationTitle":"Арганізацыі",
+    "createButton":"Стварыць",
+    "address":"Адрас",
+    "phone":"Тэлефон"
+  }
+}
+  
+

@@ -79,54 +79,54 @@ const Aside = () => {
             </svg>
         }
       </div>
-      <div className={classes.aside_content} style={{ width: showAside ? "20vw" : "0vw", opacity: showAside ? "1" : "0", padding: showAside ? "20px" : "0" }}>
-        <div className={classes.you_info}>
-          <Link to={"/profile"} className={classes.user_login}>
-            <img src={"/storage/" + user.avatar} alt="" /> {user.name}
-          </Link>
-        </div>
-        <ul>
-          <li>
-            <Link to={"/main"}>{t("aside.main")}</Link>
-          </li>
-          <li>
-            <Link to={"/news/global"}>{t("aside.news")}</Link>
-          </li>
-          {paticipantInfo &&
-            <li>
-              <Link to={"/news/organization/" + paticipantInfo.idOrganization}>{t("aside.newsOrg")}</Link>
-            </li>
-          }
-          <li>
-            <Link to={"/organizations"}>{t("aside.organizations")}</Link>
-          </li>
-          {paticipantInfo &&
-
-            <li>
-              <Link to={"/organization/" + paticipantInfo.idOrganization}>{t("aside.myOrg")}</Link>
-            </li>
-          }
-          {paticipantInfo &&
-
-            <li>
-              <Link to={"/organization/interactiveMap/" + paticipantInfo.idOrganization}>{t("aside.interactiveMap")}</Link>
-            </li>
-          }
-          <li>
-            <Link to={"/messages"}>{t("aside.messages")}</Link>
-          </li>
-          <li>
-            <Link to={"/friends"}>{t("aside.friends")}</Link>
-          </li>
-          <li className={classes.settingLink}>
-            <Link to={"/settings"}>{t("aside.settings")}</Link>
-          </li>
-          <li className={classes.exitLink}>
-            <a onClick={onLogout}>{t("aside.exit")}</a>
-          </li>
-        </ul>
+      <div className={[classes["aside_content"], showAside ? classes["asideW"] : "" ].join(" ")} style={{ opacity: showAside ? "1" : "0", padding: showAside ? "20px" : "0" }}>
+      <div className={classes.you_info}>
+        <Link to={"/profile"} className={classes.user_login}>
+          <img src={"/storage/" + user.avatar} alt="" /> {user.name}
+        </Link>
       </div>
-    </aside>
+      <ul>
+        <li>
+          <Link to={"/main"}>{t("aside.main")}</Link>
+        </li>
+        <li>
+          <Link to={"/news/global"}>{t("aside.news")}</Link>
+        </li>
+        {paticipantInfo &&
+          <li>
+            <Link to={"/news/organization/" + paticipantInfo.idOrganization}>{t("aside.newsOrg")}</Link>
+          </li>
+        }
+        <li>
+          <Link to={"/organizations"}>{t("aside.organizations")}</Link>
+        </li>
+        {paticipantInfo &&
+
+          <li>
+            <Link to={"/organization/" + paticipantInfo.idOrganization}>{t("aside.myOrg")}</Link>
+          </li>
+        }
+        {paticipantInfo &&
+
+          <li>
+            <Link to={"/organization/interactiveMap/" + paticipantInfo.idOrganization}>{t("aside.interactiveMap")}</Link>
+          </li>
+        }
+        <li>
+          <Link to={"/messages"}>{t("aside.messages")}</Link>
+        </li>
+        <li>
+          <Link to={"/friends"}>{t("aside.friends")}</Link>
+        </li>
+        <li className={classes.settingLink}>
+          <Link to={"/settings"}>{t("aside.settings")}</Link>
+        </li>
+        <li className={classes.exitLink}>
+          <a onClick={onLogout}>{t("aside.exit")}</a>
+        </li>
+      </ul>
+    </div>
+    </aside >
   );
 };
 

@@ -1,0 +1,91 @@
+{
+  "welcome":"Willkommen im sozialen NetzwerkProgrim V2",
+
+  "follow": "Verfolgen Sie Neuigkeiten und Organisationen!",
+
+  "profile":{
+    "editButton": "Zu editieren"
+  },
+
+  "editProfile":{
+    "title":"Profil bearbeiten",
+    "login":"Das Login",
+    "email":"Die Post",
+    "quote":"Das Zitat",
+    "changePassword":"Passwort ändern",
+    "oldPassword":"Altes Passwort",
+    "newPassword":"Neues Passwort",
+    "repeatPassword": "Passwort wiederholen",
+    "saveChanges": "Änderungen speichern",
+    "addittionalButton": "Weitere Informationen hinzufügen",
+    "addittionalTitle": "Weitere Informationen",
+    "backButton": "Rückwärts"
+  },
+
+  "aside":{
+    "main":"Die Wesentliche",
+    "news":"Die Nachrichten",
+    "newsOrg":"Neuigkeiten aus der Organisation",
+    "organizations":"Die Organisationen",
+    "myOrg":"Meine Organisation",
+    "interactiveMap":"Interaktive Karte",
+    "messages":"Die Mitteilungen",
+    "friends":"Die Freunde",
+    "settings":"Die Einstellungen",
+    "exit":"Der Ausgang"
+  },
+
+  "news":{
+    "titleGl":"Globale Nachrichten",
+    "titleOrg":"Neuigkeiten aus der Organisation",
+    "keyword":"Das Stichwort",
+    "sortby": "Sortieren nach",
+    "selectLang": "Sprachauswahl",
+    "noNews": "Keine Neuigkeiten",
+    "addNews": "Neuigkeiten hinzufügen",
+    "editNews": "Nachrichten bearbeiten",
+    "addPhoto": "Foto hinzufügen"
+  },
+
+  "messages":{
+    "title" : "Die Chats",
+    "aiMessage" : "Hallo, ich bin ChatGPT!",
+    "sendMessage": "Nachricht senden",
+    "typing": "Druckt..."
+  },
+  "friends":{
+    "myFriendsTitle": "Liste der Freunde",
+    "inboxTitle": "Eingehende Anträge",
+    "outboxTitle": "Ausgehende Anträge",
+    "searchFriendsTitle": "Suche nach Freunden",
+    "addButton": "Zu ergänzen",
+    "messageButton": "Die Mitteilung",
+    "deleteButton": "Zu entfernen",
+    "searchInput": "Die Suche",
+    "cancelButton": "Die Aufhebung",
+    "noFriends": "Keine Freunde",
+
+    "aside":{
+      "myFriends": "Meine Freunde",
+      "inbox": "Die Eingehenden",
+      "outbox": "Die Stammenden",
+      "searchFriends": "Suche nach Freunden"
+    }
+  },
+
+  "settings":{
+    "aside":{
+      "theme": "Das Thema",
+      "language": "Die Sprache"
+    },
+    "language":{
+      "selectLang": "Sprachauswahl"
+    }
+  },
+  "organizations":{
+    "organizationTitle":"Die Organisationen",
+    "createButton":"Zu schaffen",
+    "address":"Die Adresse",
+    "phone":"Das Telefon"
+  }
+}

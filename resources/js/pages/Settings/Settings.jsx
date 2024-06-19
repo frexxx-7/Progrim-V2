@@ -152,6 +152,10 @@ const Settings = () => {
           <button onClick={() => switchLanguage('en')}>English</button>
 
           <button onClick={() => switchLanguage('ru')}>Русский</button>
+
+          <button onClick={() => switchLanguage('by')}>Беларускі</button>
+          
+          <button onClick={() => switchLanguage('gr')}>Deutsch</button>
         </div>
       </TabPanel>
     </Tabs>
