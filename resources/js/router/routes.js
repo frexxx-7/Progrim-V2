@@ -34,6 +34,7 @@ export const privateRoutes = [
   { path: "/organizations", Component: Main, childComponent: Organizations },
   { path: "/settings", Component: Main, childComponent: Settings },
   { path: "/createOrganization", Component: Main, childComponent: CreateOrganizations },
+  { path: "/editOrganization/:id", Component: Main, childComponent: EditOrganization },
   { path: "/organization/:id", Component: Main, childComponent: ShowOrganization },
   { path: "/news/global", Component: Main, childComponent: News },
   { path: "/news/organization/:id", Component: Main, childComponent: News },

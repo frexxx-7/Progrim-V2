@@ -83,7 +83,7 @@ const InteractiveMap = () => {
       coordinatsRef.current.value = selectedPosition
   }, [selectedPosition])
 
-  const saveMarkerInDB = () => {
+  const saveMarkerInDB = () => {  
     if (!isEditing) {
       const payload = {
         title: nameRef.current.value,

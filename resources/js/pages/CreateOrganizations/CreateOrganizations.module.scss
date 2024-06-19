@@ -23,7 +23,11 @@
     width: 50vw;
     min-height: 200px;
 }
-
+.pageTitle{
+  h1{
+    color:var(--font_color);
+  }
+}
 .profile_image {
     width: 200px;
     height: 200px;

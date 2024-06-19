@@ -9,8 +9,6 @@ import OrganizationNews from './OrganizationNews/OrganizationNews';
 const News = () => {
   const { t } = useTranslation()
 
-  console.log(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1]);
-
   const switchPage = () => {
     if (window.location.pathname.split("/")[window.location.pathname.split("/").length - 1] == "global")
       return <GlobalNews />

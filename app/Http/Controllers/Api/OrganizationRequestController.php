@@ -16,24 +16,6 @@ use Illuminate\Http\Request;
 
 class OrganizationRequestController extends Controller
 {
-  public function getAllOutbox(Request $request)
-  {
-    $userId = request('idUser');
-
-    $organizationRequests = OrganizationRequest::where('idUser', $userId)
-      ->whereNotIn('state', ['confirmed', 'refused'])
-      ->with('recipient')
-      ->get();
-
-    $users = $organizationRequests->map(function ($organizationRequest) {
-      $recipientData = $organizationRequest->recipient->toArray();
-      $recipientData['friendsRequestId'] = $organizationRequest->id;
-      return $recipientData;
-    });
-
-    return response(compact("users"));
-  }
-
   public function getAllInpox(Request $request)
   {
     $organizationId = request('idOrganization');
